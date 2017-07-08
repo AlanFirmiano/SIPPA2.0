@@ -28,4 +28,8 @@ public class UsuarioService {
 	public List<Usuario> getTodosUsuarios(){
 		return repo.findAll();
 	}
+
+	public void removerConta(Integer id) {
+		repo.delete(repo.findById(id));		
+	}
 }

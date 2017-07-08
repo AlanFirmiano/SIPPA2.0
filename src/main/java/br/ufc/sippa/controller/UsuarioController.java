@@ -4,12 +4,12 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import br.ufc.sippa.model.Disciplina;
 import br.ufc.sippa.model.Usuario;
 import br.ufc.sippa.service.UsuarioService;
 
@@ -38,9 +38,10 @@ public class UsuarioController {
 		return "detalhes-conta";
 	}
 	
-	@RequestMapping(path="/remover/{id}")
-	public String removerConta(){
-		return "detalhes-conta";
+	@RequestMapping(path="/alunos/remover/{id}")
+	public String removerConta(@PathVariable("id") Integer id){
+		service.removerConta(id);
+		return "redirect:/usuario/alunos";
 	}
 	@RequestMapping(path="/cadastrarAluno")
 	public String cadastrarAluno(){
@@ -50,6 +51,6 @@ public class UsuarioController {
 	public String salvarUsuario(@RequestParam String login,@RequestParam String nome,@RequestParam String senha){
 		service.salvarUsuario(login, nome, senha);
 		
-		return "redirect:/usuario/";
+		return "redirect:/usuario/alunos";
 	}
 }
