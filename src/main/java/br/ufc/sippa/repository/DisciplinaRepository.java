@@ -11,6 +11,8 @@ import br.ufc.sippa.model.Usuario;
 @Repository
 public interface DisciplinaRepository extends JpaRepository<Disciplina, Integer>{
 	
+	Disciplina findById(Integer id);
+	
 	Disciplina findByCodigo(String codigo);
 	
 	List<Disciplina> findByPeriodo(String periodo);

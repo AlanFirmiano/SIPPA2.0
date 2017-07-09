@@ -14,12 +14,12 @@ public class DisciplinaService {
 	@Autowired
 	DisciplinaRepository repo;
 	
-	public Disciplina salvarDisciplina(String codigo,String nome,String periodo,Usuario professor){
+	public Disciplina salvarDisciplina(String codigo,String nome,String periodo/*,Usuario professor*/){
 		Disciplina disciplina = new Disciplina();
 		disciplina.setCodigo(codigo);
 		disciplina.setNome(nome);
 		disciplina.setPeriodo(periodo);
-		disciplina.setProfessor(professor);
+		//disciplina.setProfessor(professor);
 		disciplina.setAulas(null);
 		repo.save(disciplina);
 		
@@ -40,5 +40,9 @@ public class DisciplinaService {
 	
 	public Disciplina getPorCodigo(String codigo){
 		return repo.findByCodigo(codigo);
+	}
+	
+	public void removerDisciplina(Integer id) {
+		repo.delete(repo.findById(id));		
 	}
 }
