@@ -6,13 +6,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.ufc.sippa.model.Disciplina;
+import br.ufc.sippa.model.Presenca;
 import br.ufc.sippa.model.Usuario;
 import br.ufc.sippa.repository.DisciplinaRepository;
+import br.ufc.sippa.repository.PresencaRepository;
+import br.ufc.sippa.repository.UsuarioRepository;
 
 @Service
 public class DisciplinaService {
 	@Autowired
-	DisciplinaRepository repo;
+	DisciplinaRepository repoDisc;
+	@Autowired
+	UsuarioRepository repoUsuario;
+	@Autowired
+	PresencaRepository repoPresenca;
 	
 	public Disciplina salvarDisciplina(String codigo,String nome,String periodo/*,Usuario professor*/){
 		Disciplina disciplina = new Disciplina();
@@ -20,29 +27,38 @@ public class DisciplinaService {
 		disciplina.setNome(nome);
 		disciplina.setPeriodo(periodo);
 		//disciplina.setProfessor(professor);
-		disciplina.setAulas(null);
-		repo.save(disciplina);
+		disciplina.setPlano(null);
+		disciplina.setAlunos(null);
+		repoDisc.save(disciplina);
 		
 		return disciplina;
 	}
 	
+	public void alocarAluno(Integer idDisciplina,Integer idAluno){
+		Disciplina disc = repoDisc.findById(idDisciplina);
+		Usuario aluno = repoUsuario.findById(idAluno);
+		disc.getAlunos().add(aluno);
+		
+		repoDisc.save(disc);
+	}
+	
 	public List<Disciplina> getTodasDisciplinas(){
-		return repo.findAll();
+		return repoDisc.findAll();
 	}
 	
 	public List<Disciplina> getDisciplinasPorPeriodo(String periodo){
-		return repo.findByPeriodo(periodo);
+		return repoDisc.findByPeriodo(periodo);
 	}
 	
 	public List<Disciplina> getDisciplinasPorProfessor(Usuario professor){
-		return repo.findByProfessor(professor);
+		return repoDisc.findByProfessor(professor);
 	}
 	
 	public Disciplina getPorCodigo(String codigo){
-		return repo.findByCodigo(codigo);
+		return repoDisc.findByCodigo(codigo);
 	}
 	
 	public void removerDisciplina(Integer id) {
-		repo.delete(repo.findById(id));		
+		repoDisc.delete(repoDisc.findById(id));		
 	}
 }

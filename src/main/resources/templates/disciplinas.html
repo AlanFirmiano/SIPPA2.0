@@ -14,14 +14,14 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
-<body>
+<body class="#f5f5f5 grey lighten-4">
 	<nav class="teal">
 		<div class="nav-wrapper">
 			<a href="/adm" class="brand-logo center">SIPPA2.0</a>
 		</div>
 	</nav>
 	<div class="container">
-		<div class="row">
+		<div class="row white">
 			<h5 class="teal-text">Disciplinas</h5>
 			<table class="highlight">
 				<thead>
@@ -40,6 +40,8 @@
 						<td th:text="${disciplina.professor}"></td>
 						<td th:text="${disciplina.periodo}"></td>
 						<td><a class="btn-floating"
+							th:href="@{/disciplinas/lista/alocar}"><i
+								class="material-icons">class</i> </a><a class="btn-floating"
 							th:href="@{${'/disciplinas/lista/atualizar/'+disciplina.id}}"><i
 								class="material-icons">edit</i> </a> <a class="btn-floating"
 							th:href="@{${'/disciplinas/lista/remover/'+disciplina.id}}"><i

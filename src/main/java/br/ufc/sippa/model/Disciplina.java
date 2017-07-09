@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
@@ -24,8 +25,9 @@ public class Disciplina {
 	@NotNull
 	private String periodo;
 	@OneToMany
-	List<Presenca> aulas;
-	
+	List<Plano> plano;
+	@ManyToMany
+	List<Usuario> alunos;
 	
 	public Disciplina(){
 		
@@ -71,12 +73,20 @@ public class Disciplina {
 		this.periodo = periodo;
 	}
 
-	public List<Presenca> getAulas() {
-		return aulas;
+	public List<Plano> getPlano() {
+		return plano;
 	}
 
-	public void setAulas(List<Presenca> aulas) {
-		this.aulas = aulas;
+	public void setPlano(List<Plano> plano) {
+		this.plano = plano;
+	}
+
+	public List<Usuario> getAlunos() {
+		return alunos;
+	}
+
+	public void setAlunos(List<Usuario> alunos) {
+		this.alunos = alunos;
 	}
 	
 }

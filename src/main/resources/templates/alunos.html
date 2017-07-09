@@ -14,16 +14,16 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
-<body>
+<body class="#f5f5f5 grey lighten-4">
 	<nav class="teal">
 		<div class="nav-wrapper">
 			<a href="/adm" class="brand-logo center">SIPPA2.0</a>
 		</div>
 	</nav>
 	<div class="container">
-		<div class="row">
+		<div class="row white">
 			<h5 class="teal-text">Alunos</h5>
-			<table class="highlight">
+			<table class="highlight ">
 				<thead>
 					<tr>
 						<th>Id</th>
@@ -38,6 +38,8 @@
 						<td th:text="${aluno.login}"></td>
 						<td th:text="${aluno.nome}"></td>
 						<td><a class="btn-floating"
+							th:href="@{${'/usuario/alunos/editar/'+aluno.id}}"><i
+								class="material-icons">edit</i> </a><a class="btn-floating"
 							th:href="@{${'/usuario/alunos/remover/'+aluno.id}}"><i
 								class="material-icons">delete</i> </a></td>
 					</tr>

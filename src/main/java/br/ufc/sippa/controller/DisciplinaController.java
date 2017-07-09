@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 import br.ufc.sippa.model.Disciplina;
 import br.ufc.sippa.model.Usuario;
 import br.ufc.sippa.service.DisciplinaService;
+import br.ufc.sippa.service.UsuarioService;
 
 @Controller
 @RequestMapping(path="/disciplinas/")
@@ -22,12 +23,24 @@ public class DisciplinaController {
 	@Autowired
 	DisciplinaService service;
 	
+	@Autowired
+	UsuarioService serviceUser;
+	
 	@RequestMapping(path="/lista")
 	public ModelAndView index(){
 		ModelAndView model = new ModelAndView("disciplinas");
 		List<Disciplina> disciplinas = service.getTodasDisciplinas();
 		
 		model.addObject("disciplinas",disciplinas);
+		
+		return model;
+	}
+	@RequestMapping(path="/alunos")
+	public ModelAndView alunos(){
+		ModelAndView model = new ModelAndView("alunos");
+		List<Usuario> alunos = serviceUser.getTodosUsuarios();
+		
+		model.addObject("alunos",alunos);
 		
 		return model;
 	}
@@ -39,6 +52,27 @@ public class DisciplinaController {
 	@RequestMapping(path="/cadastrarDisciplina")
 	public String cadastrarDisciplina(){
 		return "cadastrarDisciplina";
+	}
+	
+	@RequestMapping(path="/lista/alocar")
+	public String alocar(){
+		return "alocar";
+	}
+	@RequestMapping(path="/alocar/salvar", method=RequestMethod.POST)
+	public String alocar(@RequestParam String codigo,@RequestParam String nome,
+			@RequestParam String periodo){
+		
+		service.salvarDisciplina(codigo, nome, periodo);
+		
+		return "redirect:/disciplinas/lista/alocar";
+	}
+	@RequestMapping(path="/alocar/{idDisciplina}/alocarAluno", method=RequestMethod.POST)
+	public String alocarAluno(@PathVariable("idDisciplina") Integer idDisciplina, 
+			@PathVariable("idAluno") Integer idAluno){
+		
+		service.alocarAluno(idDisciplina, idAluno);
+		
+		return "redirect:/disciplinas/lista/alocar/"+idDisciplina;
 	}
 	@RequestMapping(path="/salvar", method=RequestMethod.POST)
 	public String salvarDisciplina(@RequestParam String codigo,@RequestParam String nome,
