@@ -20,12 +20,15 @@
 	<body class="#f5f5f5 grey lighten-4">
 		<!-- header -->
 		<!-- Dropdown Structure -->
+		
 		<ul id="dropdownUsuario" class="dropdown-content">
 		  <li><a th:href="@{/usuario/cadastrar}">Cadastrar</a></li>
 		  <li><a th:href="@{/usuario/listar?tipo=todos}">Listar</a></li>
 		</ul>
 		<nav class="teal">
+			
 			<div class="nav-wrapper">
+				th:text="${usuario.login}"
 				<a href="#" class="brand-logo center"><i class="material-icons">class</i>SIPPA2.0</a>
 				<ul id="nav-mobile" class="right hide-on-med-and-down">
 			        <li>
