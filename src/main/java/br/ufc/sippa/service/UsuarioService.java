@@ -12,36 +12,43 @@ import br.ufc.sippa.repository.UsuarioRepository;
 public class UsuarioService {
 	
 	@Autowired
-	UsuarioRepository repo;
+	private UsuarioRepository repository;
 	
-	public Usuario salvarUsuario(String login,String nome,String senha, String tipo){
-		Usuario user = new Usuario();
-		user.setLogin(login);
-		user.setNome(nome);
-		user.setSenha(senha);
-		user.setTipo(tipo);
-		repo.save(user);
-		
-		return user;
+	public Usuario findByLogin(String login) {
+		return repository.findByLogin(login);
 	}
-	public Usuario getUsuarioById(Integer id){
-		return repo.findById(id);
+
+	public List<Usuario> findAll() {
+		return repository.findAll();
+	}
+
+	public Usuario findOne(Integer id) {
+		return repository.findOne(id);
+	}
+
+	public Usuario update(Usuario usuario) {
+		return repository.save(usuario);
+	}
+
+	public void delete(Integer id) {
+		repository.delete(id);;
+	}
+
+	public Usuario save(Usuario usuario) {
+		return repository.save(usuario);
 	}
 	
 	public List<Usuario> getTodosUsuarios(){
-		return repo.findAll();
+		return repository.findAll();
 	}
 	public List<Usuario> getAdministradores(){
-		return repo.findByTipo("administrador");
+		return repository.findByTipo("administrador");
 	}
 	public List<Usuario> getProfessores(){
-		return repo.findByTipo("professor");
+		return repository.findByTipo("professor");
 	}
 	public List<Usuario> getAlunos(){
-		return repo.findByTipo("aluno");
+		return repository.findByTipo("aluno");
 	}
 
-	public void removerUsuario(Integer id) {
-		repo.delete(repo.findById(id));
-	}
 }

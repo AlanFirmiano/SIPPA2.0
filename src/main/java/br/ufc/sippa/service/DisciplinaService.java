@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.ufc.sippa.model.Disciplina;
-import br.ufc.sippa.model.Presenca;
 import br.ufc.sippa.model.Usuario;
 import br.ufc.sippa.repository.DisciplinaRepository;
 import br.ufc.sippa.repository.PresencaRepository;
@@ -36,7 +35,7 @@ public class DisciplinaService {
 	
 	public void alocarAluno(Integer idDisciplina,Integer idAluno){
 		Disciplina disc = repoDisc.findById(idDisciplina);
-		Usuario aluno = repoUsuario.findById(idAluno);
+		Usuario aluno = repoUsuario.findOne(idAluno);
 		disc.getAlunos().add(aluno);
 		
 		repoDisc.save(disc);
