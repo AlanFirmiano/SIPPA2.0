@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		
+		<title>SIPPA2.0</title>
+		<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+		<link type="text/css" rel="stylesheet"
+			href="../materialize/css/materialize.min.css" media="screen,projection" />
+		
+		<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js" ></script>
+		<script src="../materialize/js/materialize.min.js" ></script>
+		
+	</head>
+	<body class="#f5f5f5 grey lighten-4">
+		<nav class="teal">
+			<div class="nav-wrapper">
+				<a href="/adm" class="brand-logo center">SIPPA2.0</a>
+			</div>
+		</nav>
+		<div class="container">
+			<div class="row white">
+				<h5 class="teal-text">Usuários</h5>
+				<table class="highlight " id="table-admin">
+					<thead>
+						<tr>
+							<th>Id</th>
+							<th>Login</th>
+							<th>Nome</th>
+							<th>Tipo</th>
+							<th>Opções</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="usuario : ${usuarios}">
+							<td th:text="${usuario.id}"></td>
+							<td th:text="${usuario.login}"></td>
+							<td th:text="${usuario.nome}"></td>
+							<td th:text="${usuario.tipo}"></td>
+							<td><a class="btn-floating"
+								th:href="@{${'/usuario/editar/'+usuario.id}}"><i
+									class="material-icons">edit</i> </a>
+								<a class="btn-floating"
+								th:href="@{${'/usuario/remover/'+usuario.id}}"><i
+									class="material-icons">delete</i> </a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</body>
+</html>

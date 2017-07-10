@@ -9,13 +9,21 @@ public class PrincipalController {
 	public String index(){
 		return "index";
 	}
-	@RequestMapping(path="/usuario")
-	public String usuario(){
-		return "usuario";
+	@RequestMapping(path="/login")
+	public String login(){
+		return "admin/index";
 	}
-	@RequestMapping(path="/adm")
-	public String adm(){
-		return "adm";
+	@RequestMapping(path="/admin")
+	public String admin(){
+		return "admin/index";
+	}
+	@RequestMapping(path="/professor")
+	public String professor(){
+		return "professor/index";
+	}
+	@RequestMapping(path="/aluno")
+	public String aluno(){
+		return "aluno/index";
 	}
 	@RequestMapping(path="/disciplinas")
 	public String disciplinas(){

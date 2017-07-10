@@ -1,7 +1,5 @@
 package br.ufc.sippa.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import br.ufc.sippa.model.Usuario;
 import br.ufc.sippa.service.UsuarioService;
 
 @Controller
@@ -24,12 +21,25 @@ public class UsuarioController {
 	public String index(){
 		return "usuario";
 	}
-	@RequestMapping(path="/alunos")
-	public ModelAndView alunos(){
-		ModelAndView model = new ModelAndView("alunos");
-		List<Usuario> alunos = service.getTodosUsuarios();
-		
-		model.addObject("alunos",alunos);
+	@RequestMapping(path="/listar", method=RequestMethod.GET)
+	public ModelAndView todos(@RequestParam String tipo){
+		ModelAndView model = new ModelAndView("listarUsuarios");
+		switch (tipo) {
+		case "aluno":
+			model.addObject("usuarios", service.getAlunos());
+			break;
+		case "professor":
+			model.addObject("usuarios", service.getProfessores());
+			break;
+		case "administrador":
+			model.addObject("usuarios", service.getAdministradores());
+			break;
+		case "todos":
+			
+		default:
+			model.addObject("usuarios", service.getTodosUsuarios());
+			break;
+		}
 		
 		return model;
 	}
@@ -40,8 +50,9 @@ public class UsuarioController {
 	
 	@RequestMapping(path="/alunos/remover/{id}")
 	public String removerConta(@PathVariable("id") Integer id){
+		
 		service.removerConta(id);
-		return "redirect:/usuario/alunos";
+		return "redirect:/listar?tipo=";
 	}
 	@RequestMapping(path="/cadastrarAluno")
 	public String cadastrarAluno(){

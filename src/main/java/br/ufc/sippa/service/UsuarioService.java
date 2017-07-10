@@ -28,6 +28,15 @@ public class UsuarioService {
 	public List<Usuario> getTodosUsuarios(){
 		return repo.findAll();
 	}
+	public List<Usuario> getAdministradores(){
+		return repo.findByTipo("administrador");
+	}
+	public List<Usuario> getProfessores(){
+		return repo.findByTipo("professor");
+	}
+	public List<Usuario> getAlunos(){
+		return repo.findByTipo("aluno");
+	}
 
 	public void removerConta(Integer id) {
 		repo.delete(repo.findById(id));		
