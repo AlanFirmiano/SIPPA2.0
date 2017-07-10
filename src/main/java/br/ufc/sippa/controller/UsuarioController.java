@@ -48,7 +48,7 @@ public class UsuarioController {
 		return "cadastrarAluno";
 	}
 	@RequestMapping(path="/salvar", method=RequestMethod.POST)
-	public String salvarUsuario(@RequestParam String login,@RequestParam String nome,@RequestParam String senha,@RequestParam String tipo){
+	public String salvarUsuario(@RequestParam String login, @RequestParam String nome, @RequestParam String senha, @RequestParam String tipo){
 		service.salvarUsuario(login, nome, senha, tipo);
 		
 		return "redirect:/usuario/alunos";
