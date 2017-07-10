@@ -55,10 +55,10 @@ public class UsuarioController {
 		return model;
 	}
 	@RequestMapping(path="/cadastrar", method=RequestMethod.GET)
-	public ModelAndView cadastrar(RedirectAttributes attributes){
-		ModelAndView model = new ModelAndView("cadastrarUsuario");
-		model.addObject("papeis", servicePapel.findAll());
-		return model;
+	public 	String cadastrar(Model model){
+		Usuario user = new Usuario();
+		model.addAttribute("usuario", user);
+		return "cadastrarUsuario";
 	}
 		
 	@RequestMapping(path="/remover/{id}")
@@ -71,7 +71,7 @@ public class UsuarioController {
 	}
 	
 	
-	@RequestMapping(value={"/cadastrar"}, method=RequestMethod.POST)
+	@RequestMapping(path={"/cadastrar"}, method=RequestMethod.POST)
 	public String cadastrar_post(Usuario usuario, BindingResult result, RedirectAttributes attributes){
 		if (result.hasErrors()){
 			attributes.addAttribute("erro",result.getAllErrors().get(0));

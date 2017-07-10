@@ -27,16 +27,7 @@
 							<label for="senha">Senha</label>
 						</div>
 						<div class="input-field col s12">
-							<select class="browser-default" name="tipo" th:object="${papel}">
-								<option th:each="papel : ${papeis}"
-										th:value="${papel.id}"
-										th:text="${papel.nome}">
-										Papel
-										</option>
-								<option value="aluno">Aluno</option>
-								<option value="professor">Professor</option>
-								<option value="administrador">Administrador</option>
-							</select> <label>Tipo</label>
+							
 						</div>
 						<div class="col s4">
 							<button class="btn waves-effect waves-light" type="submit"
