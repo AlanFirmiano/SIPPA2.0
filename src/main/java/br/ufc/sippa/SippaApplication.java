@@ -6,7 +6,7 @@ import org.springframework.context.annotation.ComponentScan;
 
 
 @SpringBootApplication
-@ComponentScan(value={"br.qxd.sippa","br.qxd.sippa.service","br.qxd.sippa.repository","br.qxd.sippa.api.controller"})
+@ComponentScan(value={"br.ufc.sippa","br.ufc.sippa.service","br.ufc.sippa.repository","br.ufc.sippa.controller","br.ufc.sippa.model"})
 public class SippaApplication {
 
 	public static void main(String[] args) {
