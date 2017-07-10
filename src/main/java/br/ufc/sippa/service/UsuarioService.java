@@ -24,6 +24,9 @@ public class UsuarioService {
 		
 		return user;
 	}
+	public Usuario getUsuarioById(Integer id){
+		return repo.findById(id);
+	}
 	
 	public List<Usuario> getTodosUsuarios(){
 		return repo.findAll();
@@ -38,7 +41,7 @@ public class UsuarioService {
 		return repo.findByTipo("aluno");
 	}
 
-	public void removerConta(Integer id) {
-		repo.delete(repo.findById(id));		
+	public void removerUsuario(Integer id) {
+		repo.delete(repo.findById(id));
 	}
 }
