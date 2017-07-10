@@ -18,7 +18,9 @@ public class Usuario{
     private String nome;
     @NotNull
     private String senha;
-
+    @NotNull
+    private String tipo;
+    
     public Usuario(){
     	
     }
@@ -54,5 +56,13 @@ public class Usuario{
     public void setSenha(String senha) {
         this.senha = senha;
     }
+
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
 
 }

@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.ufc.sippa.model.Presenca;
 import br.ufc.sippa.model.Usuario;
 import br.ufc.sippa.repository.UsuarioRepository;
 
@@ -15,11 +14,12 @@ public class UsuarioService {
 	@Autowired
 	UsuarioRepository repo;
 	
-	public Usuario salvarUsuario(String login,String nome,String senha){
+	public Usuario salvarUsuario(String login,String nome,String senha, String tipo){
 		Usuario user = new Usuario();
 		user.setLogin(login);
 		user.setNome(nome);
 		user.setSenha(senha);
+		user.setTipo(tipo);
 		repo.save(user);
 		
 		return user;
