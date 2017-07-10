@@ -16,7 +16,7 @@
 							<th>Id</th>
 							<th>Login</th>
 							<th>Nome</th>
-							 <th>Papel</th> 
+							 <th>Tipo</th> 
 							<th>Opções</th>
 						</tr>
 					</thead>
@@ -25,7 +25,7 @@
 							<td th:text="${usuario.id}"></td>
 							<td th:text="${usuario.login}"></td>
 							<td th:text="${usuario.nome}"></td>
-							<td th:text="${usuario.papel.nome}"></td> 
+							 <td th:text="${usuario.papel.nome}"></td> 
 							<td><a class="btn-floating"
 								th:href="@{${'/usuario/editar/'+usuario.id}}"><i
 									class="material-icons">edit</i> </a>

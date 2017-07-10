@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.ufc.sippa.model.Usuario;
+import br.ufc.sippa.service.PapelService;
 import br.ufc.sippa.service.UsuarioService;
 
 @Controller
@@ -21,6 +22,7 @@ public class UsuarioController {
 	
 	@Autowired
 	UsuarioService service;
+	PapelService servicePapel;
 	
 	private void getListUsuario(ModelAndView model, String tipo){
 		switch (tipo) {
@@ -36,7 +38,7 @@ public class UsuarioController {
 		case "todos":
 			
 		default:
-			model.addObject("usuarios", service.getTodosUsuarios());
+			model.addObject("usuarios", service.findAll());
 			break;
 		}
 	}
@@ -52,6 +54,12 @@ public class UsuarioController {
 		getListUsuario(model, tipo);
 		return model;
 	}
+	@RequestMapping(path="/cadastrar", method=RequestMethod.GET)
+	public ModelAndView cadastrar(RedirectAttributes attributes){
+		ModelAndView model = new ModelAndView("cadastrarUsuario");
+		model.addObject("papeis", servicePapel.findAll());
+		return model;
+	}
 		
 	@RequestMapping(path="/remover/{id}")
 	public String removerConta(@PathVariable("id") Long id, RedirectAttributes attributes){
@@ -62,14 +70,9 @@ public class UsuarioController {
 		return "redirect:/usuario/";
 	}
 	
-	@RequestMapping(value={"/cadastrar"}, method=RequestMethod.GET)
-	public String cadastrar(Model model){
-		Usuario user= new Usuario();
-		model.addAttribute("usuario", user);
-		return "cadastrarUsuario";
-	}
+	
 	@RequestMapping(value={"/cadastrar"}, method=RequestMethod.POST)
-	public String create_account_post(Usuario usuario, BindingResult result, RedirectAttributes attributes){
+	public String cadastrar_post(Usuario usuario, BindingResult result, RedirectAttributes attributes){
 		if (result.hasErrors()){
 			attributes.addAttribute("erro",result.getAllErrors().get(0));
 			return "redirect:/usuario/cadastrar";

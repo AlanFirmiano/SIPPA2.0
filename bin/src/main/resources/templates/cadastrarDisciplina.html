@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<title>SIPPA2.0</title>
+<link rel="stylesheet" href="../materialize/css/materialize.min.css" />
+<link href="http://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet" />
+<link type="text/css" rel="stylesheet"
+	href="../materialize/css/materialize.min.css" media="screen,projection" />
+
+<meta charset="UTF-8" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<body class="#f5f5f5 grey lighten-4">
+
+	<nav class="teal">
+		<div class="nav-wrapper">
+			<a href="#" class="brand-logo center">SIPPA2.0</a>
+		</div>
+	</nav>
+	<div class="container">
+		<div class="row">
+			<div class="col s3"></div>
+			<div class="card col s6 white z-depth-3">
+				<h5 class="teal-text">Cadastrar Disciplina</h5>
+				<form action="/disciplinas/salvar" method="POST">
+					<div class="input-field col s12">
+						<input id="codigo" type="text" name="codigo" class="validate" /> <label
+							for="codigo" data-error="Codigo Incorreto"
+							data-sucess="Codigo correto">Codigo</label>
+					</div>
+					<div class="input-field col s12">
+						<input id="nome" type="text" name="nome" class="validate" /> <label
+							for="nome" data-error="Nome Incorreto" data-sucess="Nome correto">Nome</label>
+					</div>
+					<div class="input-field col s12">
+						<input id="periodo" type="text" name="periodo" class="validate" /> <label
+							for="periodo" data-error="Periodo Incorreto" data-sucess="Periodo correto">Periodo</label>
+					</div>
+					<div class="input-field col s12">
+						<select class="browser-default">
+							<option value="" disabled="disabled" selected="selected"></option>
+							<option value="professor">David Sena</option>
+							<option value="professor">Criston</option>
+							<option value="professor">Wladmir</option>
+						</select> 
+						<label>Professor</label>
+					</div>
+					<div class="col s4">
+						<button class="btn waves-effect waves-light" type="submit"
+							name="action">Cadastrar</button>
+					<div class="row"></div>
+					</div>
+				</form>
+			</div>
+			<div class="col s3"></div>
+		</div>
+	</div>
+	
+	<script type="text/javascript"
+		src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script src="../materialize/js/materialize.min.js"></script>
+</body>
+</html>

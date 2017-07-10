@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		
+		<title>SIPPA2.0</title>
+		<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+		<link type="text/css" rel="stylesheet"
+			href="../materialize/css/materialize.min.css" media="screen,projection" />
+		
+		<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js" ></script>
+		<script src="../materialize/js/materialize.min.js" ></script>
+		
+	</head>
+	<body class="#f5f5f5 grey lighten-4">
+		<nav class="teal">
+			<div class="nav-wrapper">
+				<a href="/adm" class="brand-logo center">SIPPA2.0</a>
+			</div>
+		</nav>
+		<div class="container">
+			<div class="row white">
+				<h5 class="teal-text">Usuário</h5>
+				  <div class="row">
+				    <form action="/usuario/salvar" method="POST">
+						<div class="input-field col s12">
+							<input id="login" type="text" name="login" class="validate" /> <label
+								for="login" data-error="Login Incorreto"
+								data-sucess="Login correto">Login</label>
+						</div>
+						<div class="input-field col s12">
+							<input id="nome" type="text" name="nome" class="validate" /> <label
+								for="nome" data-error="Nome Incorreto" data-sucess="Nome correto">Nome</label>
+						</div>
+						<div class="input-field col s12">
+							<input id="senha" type="password" name="senha" class="validate" />
+							<label for="senha">Senha</label>
+						</div>
+						<div class="input-field col s12">
+							<select class="browser-default" name="tipo">
+								<option value="" disabled="disabled" selected="selected"></option>
+								<option value="aluno">Aluno</option>
+								<option value="prof">Professor</option>
+								<option value="adm">Administrador</option>
+							</select> <label>Tipo</label>
+						</div>
+						<div class="col s4">
+							<button class="btn waves-effect waves-light" type="submit"
+								name="action">Cadastrar</button>
+						</div>
+						<div class="row"></div>
+					</form>
+				  </div>
+			</div>
+		</div>
+	</body>
+</html>

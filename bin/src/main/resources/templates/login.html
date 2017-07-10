@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<!-- O layout base dessa pagina fica em layout/layout.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout/layoutLogin">
+	<section layout:fragment="content">
+		<!-- o conteúdo da página vai aqui -->
+		<div class="section">
+			<div class="container">
+				<div class="row">
+	
+					<div class="col s3"></div>
+					<div class="col s12 m6 l6">
+						<div class="card-panel z-depth-5">
+							<form action="/login" name="loginform" method="post">
+								<h4 class="brand-logo center teal-text">
+									<i class="material-icons">class</i>SIPPA2.0
+								</h4>
+								<div class="row">
+									<div class="input-field col s12">
+										<input id="login" type="text" name="username" class="validate" /> <label
+											for="login" data-error="wrong" data-sucess="rigth">Login</label>
+									</div>
+								</div>
+								<div class="row">
+									<div class="input-field col s12 ">
+										<input id="senha" type="password" name="password" class="validate" /> <label
+											for="password" data-error="wrong" data-sucess="rigth">Senha</label>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col s12">
+										<button class="btn btn-large waves-effect " type="submit"
+											name="action">Enviar</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+					<div class="col s3"></div>
+				</div>
+	
+			</div>
+		</div>
+	</section>
+</html>

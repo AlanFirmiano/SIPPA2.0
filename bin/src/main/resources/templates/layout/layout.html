@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+	lang="pt-br">
+	<head>
+		<meta charset="utf-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		
+		<title>SIPPA2.0</title>
+		<link th:href="@{http://fonts.googleapis.com/icon?family=Material+Icons}" rel="stylesheet" />
+		<link type="text/css" rel="stylesheet" th:href="@{/materialize/css/materialize.min.css}"
+			media="screen,projection" />
+		<script type="text/javascript" th:src="@{https://code.jquery.com/jquery-2.1.1.min.js}" ></script>
+		<script th:src="@{/materialize/js/materialize.min.js}" ></script>
+		
+	</head>
+	<body class="#f5f5f5 grey lighten-4">
+		<!-- header -->
+		<!-- Dropdown Structure -->
+		<ul id="dropdownUsuario" class="dropdown-content">
+		  <li><a th:href="@{/usuario/cadastrar}">Cadastrar</a></li>
+		  <li><a th:href="@{/usuario/listar?tipo=todos}">Listar</a></li>
+		</ul>
+		<nav class="teal">
+			<div class="nav-wrapper">
+				<a href="#" class="brand-logo"><i class="material-icons">class</i>SIPPA2.0</a>
+				<ul id="nav-mobile" class="right hide-on-med-and-down">
+			        <li>
+			        	<a class="dropdown-button" href="#!" data-activates="dropdownUsuario">
+			        	<i class="material-icons">person</i>
+			        	<i class="material-icons right">arrow_drop_down</i></a>
+			        </li>
+			        <li><a href="badges.html">Components</a></li>
+					<li><a href="collapsible.html">JavaScript</a></li>
+				</ul>
+			</div>
+		</nav>
+		<!-- content -->
+		<section layout:fragment="content"></section>
+		<!-- footer -->
+	</body>
+</html>
