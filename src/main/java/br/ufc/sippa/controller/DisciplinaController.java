@@ -68,20 +68,21 @@ public class DisciplinaController {
 	}
 	@RequestMapping(path="/alocar/{idDisciplina}/alocarAluno", method=RequestMethod.POST)
 	public String alocarAluno(@PathVariable("idDisciplina") Integer idDisciplina, 
-			@PathVariable("idAluno") Integer idAluno){
+			@PathVariable("idAluno") Long idAluno){
 		
 		service.alocarAluno(idDisciplina, idAluno);
 		
 		return "redirect:/disciplinas/lista/alocar/"+idDisciplina;
 	}
-	@RequestMapping(path="/salvar", method=RequestMethod.POST)
-	public String salvarDisciplina(@RequestParam String codigo,@RequestParam String nome,
-			@RequestParam String periodo/*, @RequestParam Usuario professor*/){
-		
-		service.salvarDisciplina(codigo, nome, periodo/*, professor*/);
-		
-		return "redirect:/disciplinas/lista";
-	}
+//	@RequestMapping(path="/salvar", method=RequestMethod.POST)
+//	public String salvarDisciplina(@RequestParam String codigo,@RequestParam String nome,
+//			@RequestParam String periodo/*, @RequestParam Usuario professor*/){
+//		
+//		service.salvarDisciplina(codigo, nome, periodo/*, professor*/);
+//		
+//		return "redirect:/disciplinas/lista";
+//	}
+	
 	@RequestMapping(path="/lista/remover/{id}")
 	public String removerDisciplina(@PathVariable("id") Integer id){
 		service.removerDisciplina(id);

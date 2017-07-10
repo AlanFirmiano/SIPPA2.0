@@ -22,7 +22,7 @@ public class UsuarioService {
 		return repository.findAll();
 	}
 
-	public Usuario findOne(Integer id) {
+	public Usuario findOne(Long id) {
 		return repository.findOne(id);
 	}
 
@@ -30,8 +30,8 @@ public class UsuarioService {
 		return repository.save(usuario);
 	}
 
-	public void delete(Integer id) {
-		repository.delete(id);;
+	public void delete(Long id) {
+		repository.delete(id);
 	}
 
 	public Usuario save(Usuario usuario) {
@@ -41,14 +41,14 @@ public class UsuarioService {
 	public List<Usuario> getTodosUsuarios(){
 		return repository.findAll();
 	}
-	public List<Usuario> getAdministradores(){
-		return repository.findByTipo("administrador");
-	}
-	public List<Usuario> getProfessores(){
-		return repository.findByTipo("professor");
-	}
-	public List<Usuario> getAlunos(){
-		return repository.findByTipo("aluno");
-	}
+//	public List<Usuario> getAdministradores(){
+//		return repository.findByTipo("administrador");
+//	}
+//	public List<Usuario> getProfessores(){
+//		return repository.findByTipo("professor");
+//	}
+//	public List<Usuario> getAlunos(){
+//		return repository.findByTipo("aluno");
+//	}
 
 }

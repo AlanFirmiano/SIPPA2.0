@@ -33,7 +33,7 @@ public class DisciplinaService {
 		return disciplina;
 	}
 	
-	public void alocarAluno(Integer idDisciplina,Integer idAluno){
+	public void alocarAluno(Integer idDisciplina,Long idAluno){
 		Disciplina disc = repoDisc.findById(idDisciplina);
 		Usuario aluno = repoUsuario.findOne(idAluno);
 		disc.getAlunos().add(aluno);

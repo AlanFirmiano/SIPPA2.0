@@ -1,68 +1,71 @@
 package br.ufc.sippa.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.NotNull;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 @Entity
-public class Usuario{
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-    @NotNull
-    private String login;
-    @NotNull
-    private String nome;
-    @NotNull
-    private String senha;
-    @NotNull
-    private String tipo;
-    
-    public Usuario(){
-    	
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
-
-	public String getTipo() {
-		return tipo;
+@Table(name="usuario")
+public class Usuario {
+	
+	@Id
+	@GeneratedValue
+	private long id;
+	
+	@Column
+	private String nome;
+	
+	@OneToOne
+	private Usuario_papel papel;
+	
+	@Column
+	private String login;
+	
+	@Column
+	private String senha;
+	
+	public long getId() {
+		return id;
 	}
 
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
+	public void setId(long id) {
+		this.id = id;
 	}
 
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public Usuario_papel getPapel() {
+		return papel;
+	}
+
+	public void setPapel(Usuario_papel papel) {
+		this.papel = papel;
+	}
+
+	public String getLogin() {
+		return login;
+	}
+
+	public void setLogin(String login) {
+		this.login = login;
+	}
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+	
+	
 }

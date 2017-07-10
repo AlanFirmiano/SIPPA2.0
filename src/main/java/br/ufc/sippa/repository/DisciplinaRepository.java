@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import br.ufc.sippa.model.Disciplina;
 import br.ufc.sippa.model.Usuario;
 
+
 @Repository
 public interface DisciplinaRepository extends JpaRepository<Disciplina, Integer>{
 	

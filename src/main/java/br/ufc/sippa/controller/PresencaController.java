@@ -13,6 +13,7 @@ import br.ufc.sippa.model.Presenca;
 import br.ufc.sippa.model.Usuario;
 import br.ufc.sippa.service.PresencaService;
 
+
 @Controller
 @RequestMapping(path="/presencas/")
 public class PresencaController {

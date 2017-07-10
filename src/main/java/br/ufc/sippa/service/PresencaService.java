@@ -9,6 +9,7 @@ import br.ufc.sippa.model.Presenca;
 import br.ufc.sippa.model.Usuario;
 import br.ufc.sippa.repository.PresencaRepository;
 
+
 @Service
 public class PresencaService {
 	@Autowired

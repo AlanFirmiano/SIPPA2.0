@@ -10,6 +10,7 @@ import br.ufc.sippa.model.Plano;
 import br.ufc.sippa.model.Usuario;
 import br.ufc.sippa.repository.PlanoRepository;
 
+
 @Service
 public class PlanoService {
 	@Autowired

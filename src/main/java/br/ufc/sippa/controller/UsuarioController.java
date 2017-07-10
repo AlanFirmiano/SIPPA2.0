@@ -24,15 +24,15 @@ public class UsuarioController {
 	
 	private void getListUsuario(ModelAndView model, String tipo){
 		switch (tipo) {
-		case "aluno":
-			model.addObject("usuarios", service.getAlunos());
-			break;
-		case "professor":
-			model.addObject("usuarios", service.getProfessores());
-			break;
-		case "administrador":
-			model.addObject("usuarios", service.getAdministradores());
-			break;
+//		case "aluno":
+//			model.addObject("usuarios", service.getAlunos());
+//			break;
+//		case "professor":
+//			model.addObject("usuarios", service.getProfessores());
+//			break;
+//		case "administrador":
+//			model.addObject("usuarios", service.getAdministradores());
+//			break;
 		case "todos":
 			
 		default:
@@ -54,12 +54,12 @@ public class UsuarioController {
 	}
 		
 	@RequestMapping(path="/remover/{id}")
-	public String removerConta(@PathVariable("id") Integer id, RedirectAttributes attributes){
+	public String removerConta(@PathVariable("id") Long id, RedirectAttributes attributes){
 		service.delete(id);
 		if(service.findOne(id)==null){
 			attributes.addFlashAttribute("mensagemSucesso", "Usuário removido com sucesso!");
 		}
-		return "redirect:/usuario";
+		return "redirect:/usuario/";
 	}
 	
 	@RequestMapping(value={"/cadastrar"}, method=RequestMethod.GET)
@@ -76,7 +76,7 @@ public class UsuarioController {
 		}
 		service.save(usuario);
 		attributes.addFlashAttribute("mensagemSucesso", "Usuário cadastrado com sucesso!");
-		return "redirect:/usuario";
+		return "redirect:/usuario/";
 	}
 	
 }
