@@ -1,6 +1,6 @@
 package br.ufc.sippa.controller;
 
-
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.ufc.sippa.model.Usuario;
+import br.ufc.sippa.model.Usuario_papel;
 import br.ufc.sippa.service.PapelService;
 import br.ufc.sippa.service.UsuarioService;
 
@@ -22,6 +23,7 @@ public class UsuarioController {
 	
 	@Autowired
 	UsuarioService service;
+	@Autowired
 	PapelService servicePapel;
 	
 	private void getListUsuario(ModelAndView model, String tipo){
@@ -52,12 +54,15 @@ public class UsuarioController {
 	public ModelAndView todos(@RequestParam String tipo){
 		ModelAndView model = new ModelAndView("listarUsuarios");
 		getListUsuario(model, tipo);
+		List<Usuario_papel> papeis = servicePapel.findAll();
+		model.addObject("papeis", papeis);
 		return model;
 	}
 	@RequestMapping(path="/cadastrar", method=RequestMethod.GET)
 	public 	String cadastrar(Model model){
 		Usuario user = new Usuario();
 		model.addAttribute("usuario", user);
+		model.addAttribute("papeis", servicePapel.findAll());
 		return "cadastrarUsuario";
 	}
 		

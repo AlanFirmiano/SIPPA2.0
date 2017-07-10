@@ -45,10 +45,7 @@ public class DisciplinaController {
 		return model;
 	}
 	
-	@RequestMapping(path="/{id}")
-	public String detalhesDisciplina(){
-		return "detalhes-disciplina";
-	}
+	
 	@RequestMapping(path="/cadastrarDisciplina")
 	public String cadastrarDisciplina(){
 		return "cadastrarDisciplina";
@@ -58,13 +55,12 @@ public class DisciplinaController {
 	public String alocar(){
 		return "alocar";
 	}
-	@RequestMapping(path="/alocar/salvar", method=RequestMethod.POST)
-	public String alocar(@RequestParam String codigo,@RequestParam String nome,
-			@RequestParam String periodo){
+	@RequestMapping(path="/salvar", method=RequestMethod.POST)
+	public String alocar(@RequestParam String codigo,@RequestParam String nome){
 		
-		service.salvarDisciplina(codigo, nome, periodo);
+		service.salvarDisciplina(codigo, nome);
 		
-		return "redirect:/disciplinas/lista/alocar";
+		return "redirect:/disciplinas/lista";
 	}
 	@RequestMapping(path="/alocar/{idDisciplina}/alocarAluno", method=RequestMethod.POST)
 	public String alocarAluno(@PathVariable("idDisciplina") Integer idDisciplina, 

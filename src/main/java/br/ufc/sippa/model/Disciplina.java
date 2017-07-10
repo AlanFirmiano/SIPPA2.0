@@ -22,7 +22,7 @@ public class Disciplina {
 	private String nome;
 	@ManyToOne
 	private Usuario professor;
-	@NotNull
+	
 	private String periodo;
 	@OneToMany
 	List<Plano> plano;

@@ -20,12 +20,12 @@ public class DisciplinaService {
 	@Autowired
 	PresencaRepository repoPresenca;
 	
-	public Disciplina salvarDisciplina(String codigo,String nome,String periodo/*,Usuario professor*/){
+	public Disciplina salvarDisciplina(String codigo,String nome){
 		Disciplina disciplina = new Disciplina();
 		disciplina.setCodigo(codigo);
 		disciplina.setNome(nome);
-		disciplina.setPeriodo(periodo);
-		//disciplina.setProfessor(professor);
+		disciplina.setPeriodo(null);
+		disciplina.setProfessor(null);
 		disciplina.setPlano(null);
 		disciplina.setAlunos(null);
 		repoDisc.save(disciplina);
