@@ -36,55 +36,54 @@ public class TurmaController {
 	public ModelAndView index(){
 		ModelAndView model = new ModelAndView("listarTurma");
 		List<Turma> turmas = service.findAll();
+		
 		model.addObject("turmas",turmas);
 		return model;
 	}
-	
-//	@RequestMapping(path="/alunos")
-//	public ModelAndView alunos(){
-//		ModelAndView model = new ModelAndView("alunos");
-//		List<Usuario> alunos = serviceUser.getTodosUsuarios();
-//		
-//		model.addObject("alunos",alunos);
-//		
-//		return model;
-//	}
 	
 	@RequestMapping(path="/cadastrar")
 	public String cadastrarTurma(Model model){
 		model.addAttribute("disciplinas", serviceDisc.findAll());
 		model.addAttribute("professores", serviceUser.getUsuarioPorPapel("professor"));
-		//Pq passar os alunos aki?
-		//model.addAttribute("alunos", serviceUser.getUsuarioPorPapel("aluno"));
+		
 		return "cadastrarTurma";
 	}
+	
 	
 	@RequestMapping(path="/cadastrar", method=RequestMethod.POST)
 	public String alocar(@RequestParam String periodo,@RequestParam Disciplina disciplina, @RequestParam Usuario professor){
 		service.save(periodo, disciplina, professor);
 		
 		return "redirect:/turma/listar";
-	}
+	}	
 	
-
+	@RequestMapping(path="/{id}")
+	public ModelAndView locacoes(@PathVariable("id") Integer id){
+		ModelAndView model = new ModelAndView("alocarDesalocar");
+		Turma turma = service.findOne(id);
+		List<Usuario> alunosAll = serviceUser.getUsuarioPorPapel("aluno");
+		
+		model.addObject("alunosAll", alunosAll);
+		model.addObject("turma", turma);
+		return model;
+	}	
 	
-	@RequestMapping(path="/cadastrar/{idTurma}/alocarAluno", method=RequestMethod.POST)
+	@RequestMapping(path="/{idTurma}/alocarAluno/{idAluno}", method=RequestMethod.GET)
 	public String alocarAluno(@PathVariable("idTurma") Integer idTurma, 
-			@PathVariable("usuarios") List<Usuario> alunos){
+			@PathVariable("idAluno") Long idAluno){
+		service.alocarAlunos(idTurma, idAluno);
 		
-		service.alocarAlunos(idTurma, alunos);
-		
-		return "redirect:/turma/cadastrar/"+idTurma;
+		return "redirect:/turma/"+idTurma;
 	}
 	
-//	@RequestMapping(path="/salvar", method=RequestMethod.POST)
-//	public String salvarTurma(@RequestParam String codigo,@RequestParam String nome,
-//			@RequestParam String periodo/*, @RequestParam Usuario professor*/){
-//		
-//		service.salvarTurma(codigo, nome, periodo/*, professor*/);
-//		
-//		return "redirect:/turma/lista";
-//	}
+	@RequestMapping(path="/{idTurma}/desalocarAluno/{idAluno}", method=RequestMethod.GET)
+	public String desalocarAluno(@PathVariable("idTurma") Integer idTurma, 
+			@PathVariable("idAluno") Long idAluno){
+		
+		service.desalocarAlunos(idTurma, idAluno);
+		
+		return "redirect:/turma/"+idTurma;
+	}
 	
 	@RequestMapping(path="/remover/{id}")
 	public String delete(@PathVariable("id") Integer id, RedirectAttributes attributes){

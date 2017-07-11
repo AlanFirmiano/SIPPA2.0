@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Implementation-Title: Sippa2.0
 Implementation-Version: 0.0.9-SNAPSHOT
-Built-By: brian
+Built-By: oem
 Implementation-Vendor-Id: br.ufc.sippa
-Build-Jdk: 1.8.0_131
+Build-Jdk: 1.8.0_111
 Implementation-URL: http://projects.spring.io/spring-boot/Sippa2.0/
 Created-By: Maven Integration for Eclipse
 Implementation-Vendor: Pivotal Software, Inc.

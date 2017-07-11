@@ -14,10 +14,13 @@ import br.ufc.sippa.repository.UsuarioRepository;
 
 @Service
 public class TurmaService {
+	
 	@Autowired
 	TurmaRepository repoTurma;
+	
 	@Autowired
 	UsuarioRepository repoUsuario;
+	
 	@Autowired
 	PresencaRepository repoPresenca;
 	
@@ -33,16 +36,22 @@ public class TurmaService {
 	}
 	
 
-	public void alocarAlunos(Integer idTurma,List<Usuario> alunos){
-		Turma turma = repoTurma.findById(idTurma);
-		for (Usuario a : alunos) {
-			turma.addAlunos(a);
-//			Usuario aluno = repoUsuario.findOne(a.getId());
-//			turma.getAlunos().add(aluno);			
-		}
+	public void alocarAlunos(Integer idTurma,Long idAluno){
+		Turma turma = repoTurma.findById(idTurma); 
+		Usuario usuario = repoUsuario.findOne(idAluno);
+		turma.addAlunos(usuario);			
+		
 		repoTurma.save(turma);
 	}
 
+	public void desalocarAlunos(Integer idTurma,Long idAluno){
+		Turma turma = repoTurma.findById(idTurma); 
+		Usuario usuario = repoUsuario.findOne(idAluno);
+		turma.getAlunos().remove(usuario);			
+		
+		repoTurma.save(turma);
+	}
+	
 	public Turma findOne(Integer id){
 		return repoTurma.findOne(id);
 	}
