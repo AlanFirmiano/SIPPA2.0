@@ -34,6 +34,16 @@ public class RoutingController {
 		return "tabs/index";
 	}
 	
+	@RequestMapping(value={"/aluno"})
+	public String aluno(ModelAndView model){
+		return "tabs/indexAluno";
+	}
+	
+	@RequestMapping(value={"/professor"})
+	public String professor(ModelAndView model){
+		return "tabs/indexProf";
+	}
+	
 	@RequestMapping(path="/usuario")
 	public String usuario(){
 		return "usuario/";

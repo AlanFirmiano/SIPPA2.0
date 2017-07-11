@@ -30,20 +30,22 @@
 
 				<form action="/usuario/salvar" method="POST">
 					<div class="input-field col s12">
-						<select class="browser-default">
-							<option value="" disabled="disabled" selected="selected"></option>
-							<option value="disciplina">A</option>
-							<option value="disciplina">B</option>
-							<option value="disciplina">C</option>
-						</select> <label>Disciplina</label>
+						<select class="browser-default" name="disciplina" th:object="${disciplina}">
+								<option value="" disabled="disabled" selected="selected">Disciplina</option>
+								<option th:each="disciplina : ${disciplinas}"
+										th:value="${disciplina.id}"
+										th:text="${disciplina.nome}">
+										</option>
+							</select>
 					</div>
 					<div class="input-field col s12">
-						<select class="browser-default">
-							<option value="" disabled="disabled" selected="selected"></option>
-							<option value="professor">A</option>
-							<option value="professor">B</option>
-							<option value="professor">C</option>
-						</select> <label>Professor</label>
+						<select class="browser-default" name="professor" th:object="${usuario}">
+								<option value="" disabled="disabled" selected="selected">Professor</option>
+								<option th:each="professor : ${professores}"
+										th:value="${professor.id}"
+										th:text="${professor.nome}">
+										</option>
+							</select>
 					</div>
 
 					<div class="col s4">
@@ -63,10 +65,13 @@
 				<div class="col s8">
 					<label>Escolha um Aluno</label> <select class="browser-default"
 						name="alunos">
-						<option value="" disabled="disabled" selected="selected">Escolha
-							um aluno</option>
-						<option th:each="aluno : ${alunos}" th:value="${aluno.id}"
-							th:text="${aluno.nome}"></option>
+						<option value="" disabled="disabled" selected="selected">
+							Escolha um aluno
+						</option>
+						<option th:each="aluno : ${alunos}" 
+								th:value="${aluno.id}"
+								th:text="${aluno.nome}">
+						</option>
 					</select>
 				</div>
 				<div class="col s4">

@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -14,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import br.ufc.sippa.model.Disciplina;
 import br.ufc.sippa.model.Turma;
 import br.ufc.sippa.model.Usuario;
+import br.ufc.sippa.service.DisciplinaService;
 import br.ufc.sippa.service.TurmaService;
 import br.ufc.sippa.service.UsuarioService;
 
@@ -26,6 +28,8 @@ public class TurmaController {
 	
 	@Autowired
 	UsuarioService serviceUser;
+	@Autowired
+	DisciplinaService serviceDisc;
 	
 	@RequestMapping(path="/lista")
 	public ModelAndView index(){
@@ -47,14 +51,13 @@ public class TurmaController {
 	
 	
 	@RequestMapping(path="/cadastrarTurma")
-	public String cadastrarTurma(){
-		return "cadastrarTurma";
-	}
-	
-	@RequestMapping(path="/lista/alocar")
-	public String alocar(){
+	public String cadastrarTurma(Model model){
+		model.addAttribute("disciplinas", serviceDisc.getTodasDisciplinas());
+		model.addAttribute("professores", serviceUser.getUsuarioPorPapel("professor"));
+		model.addAttribute("alunos", serviceUser.getUsuarioPorPapel("aluno"));
 		return "alocar";
 	}
+	
 	
 	@RequestMapping(path="/salvar", method=RequestMethod.POST)
 	public String alocar(@RequestParam String nome,@RequestParam String periodo,@RequestParam Disciplina disc, @RequestParam Usuario prof){

@@ -41,6 +41,10 @@ public class UsuarioService {
 	public List<Usuario> getTodosUsuarios(){
 		return repository.findAll();
 	}
+	public List<Usuario> getUsuarioPorPapel(String papel){
+		return repository.findByPapelNome(papel);
+	}
+	
 //	public List<Usuario> getAdministradores(){
 //		return repository.findByTipo("administrador");
 //	}
