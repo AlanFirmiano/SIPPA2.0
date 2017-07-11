@@ -1,6 +1,7 @@
 package br.ufc.sippa.controller;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,8 +65,16 @@ public class TurmaController {
 		ModelAndView model = new ModelAndView("alocarDesalocar");
 		Turma turma = service.findOne(id);
 		List<Usuario> alunosAll = serviceUser.getUsuarioPorPapel("aluno");
-		
-		model.addObject("alunosAll", alunosAll);
+		List<Usuario> alunosNotAloc = null;
+		for (Usuario aluno : alunosAll) {
+			if(!turma.getAlunos().contains(aluno)){
+				if(alunosNotAloc == null){
+					alunosNotAloc = new ArrayList<Usuario>();
+				}
+				alunosNotAloc.add(aluno);
+			}
+		}
+		model.addObject("alunosAll", alunosNotAloc);
 		model.addObject("turma", turma);
 		return model;
 	}	

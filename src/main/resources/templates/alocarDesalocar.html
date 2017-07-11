@@ -7,8 +7,29 @@
 <section layout:fragment="content">
 	<!-- o conteúdo da página vai aqui -->
 	
+		<div class="container">
+		<div class="row white">
+			<h5 class="teal-text center">Turma</h5>
+			<table id="table-admin">
+				<thead>
+					<tr>
+						<th>Id</th>
+						<th>Disciplina</th>
+						<th>Professor</th>
+						<th>Periodo</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td th:text="${turma.id}"></td>
+						<td th:text="${turma.disciplina.nome}"></td>
+						<td th:text="${turma.professor.nome}"></td>
+						<td th:text="${turma.periodo}"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	
-	<div class="container">
 		<div class="row">
 			<div class="card col s6">
 				<h5>Alunos</h5>
@@ -17,7 +38,7 @@
 						<tr>
 							<th>Login</th>
 							<th>Nome</th>
-							<th>Opcoes</th>
+							<th>Opções</th>
 						</tr>
 					</thead>
 					<tbody>
