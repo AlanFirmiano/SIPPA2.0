@@ -4,61 +4,60 @@
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorator="layout/layout">
-	<section layout:fragment="content">
-		<!-- o conteúdo da página vai aqui -->
-		<div class="container">
-			<div class="row">
-				<div class="col s6 m6">
-					<div class="card">
-						<div class="card-image">
-							<div>
-								<i class="deep-orange-text text-darken-1 medium material-icons">person</i> 
-							</div>
-							<a href="usuario/listar?tipo=todos" class="btn-floating halfway-fab waves-effect waves-light teal">
-								<i class="material-icons">search</i>
-							</a>
+<section layout:fragment="content">
+	<!-- o conteúdo da página vai aqui -->
+	<div class="container">
+		<div class="row">
+			<div class="col s6 m6">
+				<div class="card">
+					<div class="card-image">
+						<div>
+							<i class="deep-orange-text text-darken-1 medium material-icons">person</i>
 						</div>
-						<div class="card-content">
-							<span class="card-title teal-text">
-								Usuários
-							</span>
-						</div>
+						<a href="usuario/listar?tipo=todos"
+							class="btn-floating halfway-fab waves-effect waves-light teal">
+							<i class="material-icons">search</i>
+						</a>
 					</div>
-				</div>
-				
-				<div class="col s6 m6">
-					<div class="card">
-						<div class="card-image">
-							<div>
-								<i class="deep-orange-text text-darken-1 medium material-icons">class</i> 
-							</div>
-							<a href="disciplina/lista" class="btn-floating halfway-fab waves-effect waves-light teal"><i
-								class="material-icons">search</i></a>
-						</div>
-						<div class="card-content">
-							<span class="card-title teal-text">
-								Disciplinas 
-							</span>
-						</div>
-					</div>
-				</div>
-				<div class="col s6 m6">
-					<div class="card">
-						<div class="card-image">
-							<div>
-								<i class="deep-orange-text text-darken-1 medium material-icons">assignment</i> 
-							</div>
-							<a href="usuario/alunos" class="btn-floating halfway-fab waves-effect waves-light teal"><i
-								class="material-icons">search</i></a>
-						</div>
-						<div class="card-content">
-							<span class="card-title teal-text">
-								Alocação 
-							</span>
-						</div>
+					<div class="card-content">
+						<span class="card-title teal-text"> Usuários </span>
 					</div>
 				</div>
 			</div>
+
+			<div class="col s6 m6">
+				<div class="card">
+					<div class="card-image">
+						<div>
+							<i class="deep-orange-text text-darken-1 medium material-icons">library_books</i>
+						</div>
+						<a href="disciplina/listar"
+							class="btn-floating halfway-fab waves-effect waves-light teal"><i
+							class="material-icons">search</i></a>
+					</div>
+					<div class="card-content">
+						<span class="card-title teal-text"> Disciplinas </span>
+					</div>
+				</div>
+			</div>
+
+			<div class="col s6 m6">
+				<div class="card">
+					<div class="card-image">
+						<div>
+							<i class="deep-orange-text text-darken-1 medium material-icons">class</i>
+						</div>
+						<a href="turma/listar"
+							class="btn-floating halfway-fab waves-effect waves-light teal"><i
+							class="material-icons">search</i></a>
+					</div>
+					<div class="card-content">
+						<span class="card-title teal-text"> Turmas </span>
+					</div>
+				</div>
+			</div>
+
 		</div>
-	</section>
+	</div>
+</section>
 </html>

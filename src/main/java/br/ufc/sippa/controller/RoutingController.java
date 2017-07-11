@@ -11,10 +11,6 @@ public class RoutingController {
 //	@Autowired
 //	private UsuarioService userSvc;
 	
-	@RequestMapping(value = {"/","/login"},  method = { RequestMethod.GET, RequestMethod.POST })
-	public String login(){
-		return "/login";
-	}
 //	sessão, ta com bug
 //	@RequestMapping(value = "/login",  method = { RequestMethod.GET, RequestMethod.POST })
 //	public String login(HttpServletRequest request, HttpSession session){
@@ -28,19 +24,30 @@ public class RoutingController {
 //		return "/login";
 //	}
 
+	
+	@RequestMapping(value = {"/","/login"},  method = { RequestMethod.GET, RequestMethod.POST })
+	public String login(){
+		return "/login";
+	}
+	
 	@RequestMapping(value={"/home"})
 	public String home(ModelAndView model){
 		return "tabs/index";
 	}
 	
-	@RequestMapping(value={"/aluno"})
-	public String aluno(ModelAndView model){
-		return "tabs/indexAluno";
+	@RequestMapping(value={"/administrador"})
+	public String administrador(ModelAndView model){
+		return "tabs/index";
 	}
 	
 	@RequestMapping(value={"/professor"})
 	public String professor(ModelAndView model){
 		return "tabs/indexProf";
+	}
+	
+	@RequestMapping(value={"/aluno"})
+	public String aluno(ModelAndView model){
+		return "tabs/indexAluno";
 	}
 	
 	@RequestMapping(path="/usuario")
