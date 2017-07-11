@@ -16,8 +16,4 @@ public interface DisciplinaRepository extends JpaRepository<Disciplina, Integer>
 	
 	Disciplina findByCodigo(String codigo);
 	
-	List<Disciplina> findByPeriodo(String periodo);
-	
-	List<Disciplina> findByProfessor(Usuario professor);
-	
 }

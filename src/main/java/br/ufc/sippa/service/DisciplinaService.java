@@ -15,42 +15,17 @@ import br.ufc.sippa.repository.UsuarioRepository;
 public class DisciplinaService {
 	@Autowired
 	DisciplinaRepository repoDisc;
-	@Autowired
-	UsuarioRepository repoUsuario;
-	@Autowired
-	PresencaRepository repoPresenca;
 	
 	public Disciplina salvarDisciplina(String codigo,String nome){
 		Disciplina disciplina = new Disciplina();
 		disciplina.setCodigo(codigo);
 		disciplina.setNome(nome);
-		disciplina.setPeriodo(null);
-		disciplina.setProfessor(null);
-		disciplina.setPlano(null);
-		disciplina.setAlunos(null);
 		repoDisc.save(disciplina);
-		
 		return disciplina;
-	}
-	
-	public void alocarAluno(Integer idDisciplina,Long idAluno){
-		Disciplina disc = repoDisc.findById(idDisciplina);
-		Usuario aluno = repoUsuario.findOne(idAluno);
-		disc.getAlunos().add(aluno);
-		
-		repoDisc.save(disc);
 	}
 	
 	public List<Disciplina> getTodasDisciplinas(){
 		return repoDisc.findAll();
-	}
-	
-	public List<Disciplina> getDisciplinasPorPeriodo(String periodo){
-		return repoDisc.findByPeriodo(periodo);
-	}
-	
-	public List<Disciplina> getDisciplinasPorProfessor(Usuario professor){
-		return repoDisc.findByProfessor(professor);
 	}
 	
 	public Disciplina getPorCodigo(String codigo){
@@ -60,4 +35,5 @@ public class DisciplinaService {
 	public void removerDisciplina(Integer id) {
 		repoDisc.delete(repoDisc.findById(id));		
 	}
+	
 }

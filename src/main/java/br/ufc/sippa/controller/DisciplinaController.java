@@ -30,58 +30,26 @@ public class DisciplinaController {
 	public ModelAndView index(){
 		ModelAndView model = new ModelAndView("disciplinas");
 		List<Disciplina> disciplinas = service.getTodasDisciplinas();
-		
 		model.addObject("disciplinas",disciplinas);
-		
 		return model;
 	}
-	@RequestMapping(path="/alunos")
-	public ModelAndView alunos(){
-		ModelAndView model = new ModelAndView("alunos");
-		List<Usuario> alunos = serviceUser.getTodosUsuarios();
-		
-		model.addObject("alunos",alunos);
-		
-		return model;
-	}
-	
 	
 	@RequestMapping(path="/cadastrarDisciplina")
 	public String cadastrarDisciplina(){
 		return "cadastrarDisciplina";
 	}
 	
-	@RequestMapping(path="/lista/alocar")
-	public String alocar(){
-		return "alocar";
-	}
 	@RequestMapping(path="/salvar", method=RequestMethod.POST)
 	public String alocar(@RequestParam String codigo,@RequestParam String nome){
-		
 		service.salvarDisciplina(codigo, nome);
-		
 		return "redirect:/disciplinas/lista";
 	}
-	@RequestMapping(path="/alocar/{idDisciplina}/alocarAluno", method=RequestMethod.POST)
-	public String alocarAluno(@PathVariable("idDisciplina") Integer idDisciplina, 
-			@PathVariable("idAluno") Long idAluno){
-		
-		service.alocarAluno(idDisciplina, idAluno);
-		
-		return "redirect:/disciplinas/lista/alocar/"+idDisciplina;
-	}
-//	@RequestMapping(path="/salvar", method=RequestMethod.POST)
-//	public String salvarDisciplina(@RequestParam String codigo,@RequestParam String nome,
-//			@RequestParam String periodo/*, @RequestParam Usuario professor*/){
-//		
-//		service.salvarDisciplina(codigo, nome, periodo/*, professor*/);
-//		
-//		return "redirect:/disciplinas/lista";
-//	}
 	
+
 	@RequestMapping(path="/lista/remover/{id}")
 	public String removerDisciplina(@PathVariable("id") Integer id){
 		service.removerDisciplina(id);
 		return "redirect:/disciplinas/lista";
 	}
+	
 }
