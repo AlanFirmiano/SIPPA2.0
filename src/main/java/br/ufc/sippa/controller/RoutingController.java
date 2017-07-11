@@ -3,6 +3,7 @@ package br.ufc.sippa.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class RoutingController {
@@ -28,7 +29,7 @@ public class RoutingController {
 //	}
 
 	@RequestMapping(value={"/home"})
-	public String home(){
+	public String home(ModelAndView model){
 		return "tabs/index";
 	}
 	

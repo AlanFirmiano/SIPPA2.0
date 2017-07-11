@@ -27,7 +27,13 @@
 							<label for="senha">Senha</label>
 						</div>
 						<div class="input-field col s12">
-							
+							<select class="browser-default" name="papel" th:object="${papel}">
+								<option value="" disabled="disabled" selected="selected">Tipo</option>
+								<option th:each="papel : ${papeis}"
+										th:value="${papel.id}"
+										th:text="${papel.nome}">
+										</option>
+							</select>
 						</div>
 						<div class="col s4">
 							<button class="btn waves-effect waves-light" type="submit"
