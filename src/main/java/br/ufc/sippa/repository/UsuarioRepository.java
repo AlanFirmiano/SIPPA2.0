@@ -18,4 +18,7 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long>{
 	Usuario findOne(Long id);
 	
 	List<Usuario> findByPapelNome(String papel);
+	
+	List<Usuario> findByNome(String nome);
+
 }

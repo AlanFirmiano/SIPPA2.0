@@ -44,7 +44,7 @@ public class TurmaController {
 	@RequestMapping(path="/cadastrar")
 	public String cadastrarTurma(Model model){
 		model.addAttribute("disciplinas", serviceDisc.findAll());
-		model.addAttribute("professores", serviceUser.getUsuarioPorPapel("professor"));
+		model.addAttribute("professores", serviceUser.findByPapel("professor"));
 		return "cadastrarTurma";
 	}
 	
@@ -52,7 +52,7 @@ public class TurmaController {
 	@RequestMapping(path="/cadastrar", method=RequestMethod.POST)
 	public String alocar(Turma turma, BindingResult result, RedirectAttributes attributes){
 		if (result.hasErrors()){
-			attributes.addAttribute("erro",result.getAllErrors().get(0));
+			attributes.addAttribute("error",result.getAllErrors().get(0));
 			return "redirect:/disciplina/cadastrar";
 		}
 		service.save(turma);
@@ -64,7 +64,7 @@ public class TurmaController {
 	public ModelAndView locacoes(@PathVariable("id") Integer id){
 		ModelAndView model = new ModelAndView("alocarDesalocar");
 		Turma turma = service.findOne(id);
-		List<Usuario> alunosAll = serviceUser.getUsuarioPorPapel("aluno");
+		List<Usuario> alunosAll = serviceUser.findByPapel("aluno");
 		List<Usuario> alunosNotAloc = null;
 		for (Usuario aluno : alunosAll) {
 			if(!turma.getAlunos().contains(aluno)){
@@ -100,7 +100,7 @@ public class TurmaController {
 	public 	String editar(@PathVariable("id") Integer id, Model model){
 		model.addAttribute("current", service.findOne(id));
 		model.addAttribute("disciplinas", serviceDisc.findAll());
-		model.addAttribute("professores", serviceUser.getUsuarioPorPapel("professor"));
+		model.addAttribute("professores", serviceUser.findByPapel("professor"));
 		return "editarTurma";
 	}
 	

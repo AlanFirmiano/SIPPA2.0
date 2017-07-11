@@ -52,10 +52,9 @@ public class UsuarioController {
 	public ModelAndView todos(@RequestParam String tipo){
 		ModelAndView model = new ModelAndView("listarUsuarios");
 		getListUsuario(model, tipo);
-//		List<Usuario_papel> papeis = servicePapel.findAll();
-//		model.addObject("papeis", papeis);
 		return model;
 	}
+	
 	@RequestMapping(path="/cadastrar", method=RequestMethod.GET)
 	public 	String cadastrar(Model model){
 		Usuario user = new Usuario();
@@ -103,5 +102,12 @@ public class UsuarioController {
 		attributes.addFlashAttribute("mensagemSucesso", "Usuário cadastrado com sucesso!");
 		return "redirect:/usuario/";
 	}
+	
+//	@RequestMapping(path="/pesquisarNome", method=RequestMethod.POST)
+//	public ModelAndView pesquisarNome(String nome){
+//		ModelAndView model = new ModelAndView("listarUsuarios");
+//		model.addObject("usuarios", service.findAll());// service.findByNome(nome));
+//		return model;
+//	}
 	
 }

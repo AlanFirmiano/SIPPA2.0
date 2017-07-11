@@ -38,10 +38,12 @@ public class UsuarioService {
 		return repository.save(usuario);
 	}
 	
-	public List<Usuario> getTodosUsuarios(){
-		return repository.findAll();
+
+	public List<Usuario> findByNome(String nome){
+		return repository.findByNome(nome);
 	}
-	public List<Usuario> getUsuarioPorPapel(String papel){
+	
+	public List<Usuario> findByPapel(String papel){
 		return repository.findByPapelNome(papel);
 	}
 	
