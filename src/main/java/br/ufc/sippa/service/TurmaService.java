@@ -40,8 +40,10 @@ public class TurmaService {
 	public void alocarAlunos(Integer idTurma,Long idAluno){
 		Turma turma = repoTurma.findById(idTurma); 
 		Usuario usuario = repoUsuario.findOne(idAluno);
-		turma.addAlunos(usuario);			
-		repoTurma.save(turma);
+		if(!turma.getAlunos().contains(usuario)){
+			turma.addAlunos(usuario);			
+			repoTurma.save(turma);
+		}
 	}
 
 	public void desalocarAlunos(Integer idTurma,Long idAluno){
