@@ -13,15 +13,16 @@
 			<div class="col s2"></div>
 			<div class="card col s8 white z-depth-3">
 
-				<h5 class="teal-text">Cadastrar Turma</h5>
+				<h5 class="teal-text">Editar Turma</h5>
 
-				<form th:action="@{/turma/cadastrar}" method="POST" th:object="${turma}">
+				<form th:action="@{/turma/editar/}+${current.id}" method="post" th:object="${turma}">	
 
 					<div class="input-field col s12">
 						<select class="browser-default" name="disciplina"
 							th:object="${disciplina}">
 							<option th:each="disciplina : ${disciplinas}"
-								th:value="${disciplina.id}" th:text="${disciplina.nome}">
+								th:value="${disciplina.id}" th:text="${disciplina.nome}"
+								th:selected="${disciplina.id == current.disciplina.id}">
 							</option>
 						</select>
 					</div>
@@ -29,12 +30,14 @@
 						<select class="browser-default" name="professor"
 							th:object="${usuario}">
 							<option th:each="professor : ${professores}"
-								th:value="${professor.id}" th:text="${professor.nome}">
+								th:value="${professor.id}" th:text="${professor.nome}"
+								th:selected="${professor.id == current.professor.id}">
 							</option>
 						</select>
 					</div>
 					<div class="input-field col s6">
-						<input id="periodo" type="text" name="periodo" class="validate" />
+						<input id="periodo" type="text" name="periodo" class="validate"
+						th:value="${current.periodo}" />
 						<label for="periodo" data-error="Periodo Incorreto"
 							data-sucess="Periodo correto">Periodo</label>
 					</div>

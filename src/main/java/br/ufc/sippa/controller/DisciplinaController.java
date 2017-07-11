@@ -3,6 +3,7 @@ package br.ufc.sippa.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -47,7 +48,25 @@ public class DisciplinaController {
 		return "redirect:/disciplina/listar";
 	}
 	
+	@RequestMapping(path="/editar/{id}", method=RequestMethod.GET)
+	public 	String editar(@PathVariable("id") Integer id, Model model){
+		model.addAttribute("current", service.findOne(id));
+		return "editarDisciplina";
+	}
+	
+	@RequestMapping(path={"/editar/{id}"}, method=RequestMethod.POST)
+	public String editar_post(@PathVariable("id") Integer id, Disciplina disciplina, BindingResult result, RedirectAttributes attributes){
+		if (result.hasErrors()){
+			attributes.addAttribute("erro",result.getAllErrors().get(0));
+			return "redirect:/usuario/editar/"+id;
+		}
+		disciplina.setId(id);
+		service.save(disciplina);
+		attributes.addFlashAttribute("mensagemSucesso", "Disciplina editada com sucesso!");
+		return "redirect:/disciplina/listar";
+	}
 
+	
 	@RequestMapping(path="/remover/{id}")
 	public String removerDisciplina(@PathVariable("id") Integer id, RedirectAttributes attributes){
 		service.delete(id);
