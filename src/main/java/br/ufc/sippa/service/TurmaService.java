@@ -43,20 +43,24 @@ public class TurmaService {
 		}
 		repoTurma.save(turma);
 	}
+
+	public Turma findOne(Integer id){
+		return repoTurma.findOne(id);
+	}
 	
-	public List<Turma> getTodasTurmas(){
+	public List<Turma> findAll(){
 		return repoTurma.findAll();
 	}
 	
-	public List<Turma> getTurmasPorPeriodo(String periodo){
+	public List<Turma> findByPerido(String periodo){
 		return repoTurma.findByPeriodo(periodo);
 	}
 	
-	public List<Turma> getTurmasPorProfessor(Usuario professor){
+	public List<Turma> findByProfessor(Usuario professor){
 		return repoTurma.findByProfessor(professor);
 	}
 	
-	public void removerTurma(Integer id) {
+	public void delete(Integer id) {
 		repoTurma.delete(repoTurma.findById(id));		
 	}
 }

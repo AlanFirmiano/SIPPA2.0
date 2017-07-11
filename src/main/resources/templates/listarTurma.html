@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<!-- O layout base dessa pagina fica em layout/layout.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout/layout">
+<section layout:fragment="content">
+	<!-- o conteúdo da página vai aqui -->
+
+	<div class="container">
+		<div class="row white">
+			<h5 class="teal-text">Turmas</h5>
+			<table class="highlight " id="table-admin">
+				<thead>
+					<tr>
+						<th>Id</th>
+						<th>Disciplina</th>
+						<th>Professor</th>
+						<th>Periodo</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="turma : ${turmas}">
+						<td th:text="${turma.id}"></td>
+						<td th:text="${turma.disciplina.nome}"></td>
+						<td th:text="${turma.professor.nome}"></td>
+						<td th:text="${turma.periodo}"></td>
+						<td>
+						<a class="btn-floating"
+							th:href="@{${'/turma/editar/'+turma.id}}"> <i
+								class="material-icons">swap_vertical_circle</i>
+						</a>
+						<a class="btn-floating"
+							th:href="@{${'/turma/editar/'+turma.id}}"> <i
+								class="material-icons">edit</i>
+						</a>
+						 <a class="btn-floating"
+							th:href="@{${'/turma/remover/'+turma.id}}"> <i
+								class="material-icons">delete</i>
+						</a></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div class="fixed-action-btn">
+		<a th:href="@{/turma/cadastrar}"
+			class="btn-floating btn-large waves-effect waves-light red pulse">
+			<i class="material-icons">add</i>
+		</a>
+	</div>
+</section>
+</html>

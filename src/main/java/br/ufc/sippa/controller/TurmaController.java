@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.ufc.sippa.model.Disciplina;
 import br.ufc.sippa.model.Turma;
@@ -33,9 +34,9 @@ public class TurmaController {
 	
 	@RequestMapping(path="/listar")
 	public ModelAndView index(){
-		ModelAndView model = new ModelAndView("turma");
-		List<Turma> turma = service.getTodasTurmas();
-		model.addObject("turma",turma);
+		ModelAndView model = new ModelAndView("listarTurma");
+		List<Turma> turmas = service.findAll();
+		model.addObject("turmas",turmas);
 		return model;
 	}
 	
@@ -85,8 +86,11 @@ public class TurmaController {
 //	}
 	
 	@RequestMapping(path="/remover/{id}")
-	public String removerTurma(@PathVariable("id") Integer id){
-		service.removerTurma(id);
+	public String delete(@PathVariable("id") Integer id, RedirectAttributes attributes){
+		service.delete(id);
+		if(service.findOne(id)==null){
+			attributes.addFlashAttribute("mensagemSucesso", "Usuário removido com sucesso!");
+		}
 		return "redirect:/turma/listar";
 	}
 }
