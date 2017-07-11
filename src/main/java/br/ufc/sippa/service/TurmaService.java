@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.ufc.sippa.model.Disciplina;
 import br.ufc.sippa.model.Turma;
 import br.ufc.sippa.model.Usuario;
 import br.ufc.sippa.repository.TurmaRepository;
@@ -20,22 +21,26 @@ public class TurmaService {
 	@Autowired
 	PresencaRepository repoPresenca;
 	
-	public Turma salvarTurma(String codigo,String nome){
+	public Turma salvarTurma(String nome, String periodo, Disciplina disc, Usuario professor){
 		Turma turma = new Turma();
 		turma.setNome(nome);
-		turma.setPeriodo(null);
-		turma.setProfessor(null);
+		turma.setPeriodo(periodo);
+		turma.setDisciplina(disc);
+		turma.setProfessor(professor);
 		turma.setPlano(null);
 		turma.setAlunos(null);
 		repoTurma.save(turma);
 		return turma;
 	}
 	
-	public void alocarAluno(Integer idTurma,Long idAluno){
+
+	public void alocarAlunos(Integer idTurma,List<Usuario> alunos){
 		Turma turma = repoTurma.findById(idTurma);
-		Usuario aluno = repoUsuario.findOne(idAluno);
-		turma.getAlunos().add(aluno);
-		
+		for (Usuario a : alunos) {
+			turma.addAlunos(a);
+//			Usuario aluno = repoUsuario.findOne(a.getId());
+//			turma.getAlunos().add(aluno);			
+		}
 		repoTurma.save(turma);
 	}
 	

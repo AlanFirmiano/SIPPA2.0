@@ -39,9 +39,14 @@ public class RoutingController {
 	}
 
 	
-	@RequestMapping(path="/disciplinas")
+	@RequestMapping(path="/disciplina")
 	public String disciplinas(){
-		return "disciplinas";
+		return "disciplina";
+	}
+	
+	@RequestMapping(path="/turma")
+	public String turmas(){
+		return "turma";
 	}
 
 	

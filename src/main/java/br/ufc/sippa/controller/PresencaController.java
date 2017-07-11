@@ -15,7 +15,7 @@ import br.ufc.sippa.service.PresencaService;
 
 
 @Controller
-@RequestMapping(path="/presencas/")
+@RequestMapping(path="/presenca/")
 public class PresencaController {
 	
 	@Autowired
@@ -41,6 +41,6 @@ public class PresencaController {
 		
 		service.salvarPresenca(aluno, status);
 		
-		return "redirect:/presencas/";
+		return "redirect:/presenca/";
 	}
 }

@@ -11,13 +11,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import br.ufc.sippa.model.Disciplina;
 import br.ufc.sippa.model.Turma;
 import br.ufc.sippa.model.Usuario;
 import br.ufc.sippa.service.TurmaService;
 import br.ufc.sippa.service.UsuarioService;
 
 @Controller
-@RequestMapping(path="/turmas/")
+@RequestMapping(path="/turma/")
 public class TurmaController {
 	
 	@Autowired
@@ -30,9 +31,7 @@ public class TurmaController {
 	public ModelAndView index(){
 		ModelAndView model = new ModelAndView("turma");
 		List<Turma> turma = service.getTodasTurmas();
-		
 		model.addObject("turma",turma);
-		
 		return model;
 	}
 	
@@ -56,21 +55,23 @@ public class TurmaController {
 	public String alocar(){
 		return "alocar";
 	}
+	
 	@RequestMapping(path="/salvar", method=RequestMethod.POST)
-	public String alocar(@RequestParam String codigo,@RequestParam String nome){
-		
-		service.salvarTurma(codigo, nome);
+	public String alocar(@RequestParam String nome,@RequestParam String periodo,@RequestParam Disciplina disc, @RequestParam Usuario prof){
+		service.salvarTurma(nome, periodo, disc, prof);
 		
 		return "redirect:/turma/lista";
 	}
+	
 	@RequestMapping(path="/alocar/{idTurma}/alocarAluno", method=RequestMethod.POST)
 	public String alocarAluno(@PathVariable("idTurma") Integer idTurma, 
-			@PathVariable("idAluno") Long idAluno){
+			@PathVariable("usuarios") List<Usuario> alunos){
 		
-		service.alocarAluno(idTurma, idAluno);
+		service.alocarAlunos(idTurma, alunos);
 		
 		return "redirect:/turma/lista/alocar/"+idTurma;
 	}
+	
 //	@RequestMapping(path="/salvar", method=RequestMethod.POST)
 //	public String salvarTurma(@RequestParam String codigo,@RequestParam String nome,
 //			@RequestParam String periodo/*, @RequestParam Usuario professor*/){
