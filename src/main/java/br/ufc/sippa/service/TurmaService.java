@@ -37,21 +37,10 @@ public class TurmaService {
 		return repoTurma.save(turma);
 	}
 
-<<<<<<< HEAD
 	public void alocarAlunos(Integer idTurma,Long idAluno){
 		Turma turma = repoTurma.findById(idTurma); 
 		Usuario usuario = repoUsuario.findOne(idAluno);
 		turma.addAlunos(usuario);			
-		
-=======
-	public void alocarAlunos(Integer idTurma,List<Usuario> alunos){
-		Turma turma = repoTurma.findById(idTurma);
-		for (Usuario a : alunos) {
-			turma.addAlunos(a);
-			//			Usuario aluno = repoUsuario.findOne(a.getId());
-			//			turma.getAlunos().add(aluno);			
-		}
->>>>>>> 0edcdccca4e4f398619759966f4393d15e4cc345
 		repoTurma.save(turma);
 	}
 

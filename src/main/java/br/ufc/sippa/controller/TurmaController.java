@@ -44,10 +44,6 @@ public class TurmaController {
 	public String cadastrarTurma(Model model){
 		model.addAttribute("disciplinas", serviceDisc.findAll());
 		model.addAttribute("professores", serviceUser.getUsuarioPorPapel("professor"));
-<<<<<<< HEAD
-		
-=======
->>>>>>> 0edcdccca4e4f398619759966f4393d15e4cc345
 		return "cadastrarTurma";
 	}
 	
@@ -63,7 +59,6 @@ public class TurmaController {
 		return "redirect:/turma/listar";
 	}	
 	
-<<<<<<< HEAD
 	@RequestMapping(path="/{id}")
 	public ModelAndView locacoes(@PathVariable("id") Integer id){
 		ModelAndView model = new ModelAndView("alocarDesalocar");
@@ -74,8 +69,6 @@ public class TurmaController {
 		model.addObject("turma", turma);
 		return model;
 	}	
-=======
->>>>>>> 0edcdccca4e4f398619759966f4393d15e4cc345
 	
 	@RequestMapping(path="/{idTurma}/alocarAluno/{idAluno}", method=RequestMethod.GET)
 	public String alocarAluno(@PathVariable("idTurma") Integer idTurma, 
@@ -85,7 +78,6 @@ public class TurmaController {
 		return "redirect:/turma/"+idTurma;
 	}
 	
-<<<<<<< HEAD
 	@RequestMapping(path="/{idTurma}/desalocarAluno/{idAluno}", method=RequestMethod.GET)
 	public String desalocarAluno(@PathVariable("idTurma") Integer idTurma, 
 			@PathVariable("idAluno") Long idAluno){
@@ -93,7 +85,8 @@ public class TurmaController {
 		service.desalocarAlunos(idTurma, idAluno);
 		
 		return "redirect:/turma/"+idTurma;
-=======
+	}
+	
 	@RequestMapping(path="/editar/{id}", method=RequestMethod.GET)
 	public 	String editar(@PathVariable("id") Integer id, Model model){
 		model.addAttribute("current", service.findOne(id));
@@ -112,7 +105,7 @@ public class TurmaController {
 		service.save(turma);
 		attributes.addFlashAttribute("mensagemSucesso", "Disciplina editada com sucesso!");
 		return "redirect:/turma/listar";
->>>>>>> 0edcdccca4e4f398619759966f4393d15e4cc345
+
 	}
 	
 	@RequestMapping(path="/remover/{id}")
