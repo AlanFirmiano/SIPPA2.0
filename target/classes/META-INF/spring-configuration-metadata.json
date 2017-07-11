@@ -1,0 +1,10 @@
+{
+  "groups": [{
+    "name": "spring.datasource",
+    "type": "javax.sql.DataSource",
+    "sourceType": "br.ufc.sippa.AppConfig",
+    "sourceMethod": "public javax.sql.DataSource dataSource() throws java.lang.ClassNotFoundException"
+  }],
+  "properties": [],
+  "hints": []
+}

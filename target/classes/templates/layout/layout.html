@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+	lang="pt-br">
+	<head>
+		<meta charset="utf-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		
+		<title>SIPPA2.0</title>
+		<link th:href="@{http://fonts.googleapis.com/icon?family=Material+Icons}" rel="stylesheet" />
+		<link type="text/css" rel="stylesheet" th:href="@{/materialize/css/materialize.min.css}"
+			media="screen,projection" />
+		<script type="text/javascript" th:src="@{https://code.jquery.com/jquery-2.1.1.min.js}" ></script>
+		<script th:src="@{/materialize/js/materialize.min.js}" ></script>
+		
+	</head>
+	<body class="#f5f5f5 grey lighten-4">
+		<!-- header -->
+		<!-- Dropdown Structure -->
+		<ul id="dropdownUsuario" class="dropdown-content">
+		  <li><a th:href="@{/usuario/cadastrar}">Cadastrar</a></li>
+		  <li><a th:href="@{/usuario/listar?tipo=todos}">Listar</a></li>
+		</ul>
+		
+		<!-- Dropdown Structure -->
+		<ul id="dropdownDisciplina" class="dropdown-content">
+		  <li><a th:href="@{/disciplina/cadastrar}">Cadastrar</a></li>
+		  <li><a th:href="@{/disciplina/listar}">Listar</a></li>
+		</ul>
+		
+		<!-- Dropdown Structure -->
+		<ul id="dropdownTurma" class="dropdown-content">
+		  <li><a th:href="@{/turma/cadastrarTurma}">Cadastrar</a></li>
+		  <li><a th:href="@{/turma/listar}">Listar</a></li>
+		</ul>
+		
+		<nav class="teal">
+			
+			<div class="nav-wrapper">
+				<strong th:inline="text">Bem-vindo, [[${#httpServletRequest.remoteUser}]]!</strong>
+				<a th:href="@{/home}" class="brand-logo center"><i class="material-icons">class</i>SIPPA2.0</a>
+				<ul id="nav-mobile" class="right hide-on-med-and-down">
+			        <li>
+			        	<a class="dropdown-button" href="#!" data-activates="dropdownUsuario">
+			        	Usuário
+			        	<i class="material-icons right">arrow_drop_down</i></a>
+			        </li>
+			        <li>
+			        	<a class="dropdown-button" href="#!" data-activates="dropdownDisciplina">
+			        	Disciplina
+			        	<i class="material-icons right">arrow_drop_down</i></a>
+			        </li>
+			        <li>
+			        	<a class="dropdown-button" href="#!" data-activates="dropdownTurma">
+			        	Turma
+			        	<i class="material-icons right">arrow_drop_down</i></a>
+			        </li>
+					<li><a th:href="@{/login?logout}"><i class="material-icons right">power_settings_new</i></a></li>
+				</ul>
+			</div>
+		</nav>
+		<!-- content -->
+		<section layout:fragment="content"></section>
+		<!-- footer -->
+		<footer class="page-footer teal">
+          <div class="container">
+            <div class="row">
+              <div class="col l6 s12">
+                <h5 class="white-text">Sippa 2.0</h5>
+                <p class="grey-text text-lighten-4">Este sistema foi desenvolvido para o trabalho de Desenvolvimento Web de 2017.1</p>
+              </div>
+              <div class="col l4 offset-l2 s12">
+                <h5 class="white-text">Equipe:</h5>
+                <ul>
+                  <li><a class="grey-text text-lighten-3" th:href="@{https://github.com/AlanFirmiano/SIPPA2.0/graphs/contributors}">Github/Contributors</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container">
+            © 2017 Todos os direitos reservados.
+            </div>
+          </div>
+        </footer>
+	</body>
+</html>
