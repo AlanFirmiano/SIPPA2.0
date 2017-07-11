@@ -27,10 +27,11 @@
 		
 		<!-- Dropdown Structure -->
 		<ul id="dropdownDisciplina" class="dropdown-content">
-		  <li><a th:href="@{/disciplina/cadastrarDisciplina}">Cadastrar</a></li>
-		  <li><a th:href="@{/disciplina/lista}">Listar</a></li>
+		  <li><a th:href="@{/disciplina/cadastrar}">Cadastrar</a></li>
+		  <li><a th:href="@{/disciplina/listar}">Listar</a></li>
 		</ul>
 		
+		<!-- Dropdown Structure -->
 		<ul id="dropdownTurma" class="dropdown-content">
 		  <li><a th:href="@{/turma/cadastrar}">Cadastrar</a></li>
 		  <li><a th:href="@{/turma/listar}">Listar</a></li>
@@ -57,7 +58,7 @@
 			        	Turma
 			        	<i class="material-icons right">arrow_drop_down</i></a>
 			        </li>
-					<li><a th:href="@{/logout}"><i class="material-icons right">power_settings_new</i></a></li>
+					<li><a th:href="@{/login?logout}"><i class="material-icons right">power_settings_new</i></a></li>
 				</ul>
 			</div>
 		</nav>

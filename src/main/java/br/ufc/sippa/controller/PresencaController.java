@@ -31,12 +31,7 @@ public class PresencaController {
 		return model;
 	}
 	
-	@RequestMapping(path="/{id}")
-	public String detalhesConta(){
-		return "detalhes-presenca";
-	}
-	
-	@RequestMapping(path="/salvar", method=RequestMethod.POST)
+	@RequestMapping(path="/cadastrar", method=RequestMethod.POST)
 	public String salvarPresenca(@RequestParam Usuario aluno,@RequestParam boolean status){
 		
 		service.salvarPresenca(aluno, status);

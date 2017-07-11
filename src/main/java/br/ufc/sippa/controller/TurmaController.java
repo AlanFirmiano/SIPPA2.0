@@ -27,7 +27,7 @@ public class TurmaController {
 	@Autowired
 	UsuarioService serviceUser;
 	
-	@RequestMapping(path="/lista")
+	@RequestMapping(path="/listar")
 	public ModelAndView index(){
 		ModelAndView model = new ModelAndView("turma");
 		List<Turma> turma = service.getTodasTurmas();
@@ -35,23 +35,23 @@ public class TurmaController {
 		return model;
 	}
 	
-	@RequestMapping(path="/alunos")
-	public ModelAndView alunos(){
-		ModelAndView model = new ModelAndView("alunos");
-		List<Usuario> alunos = serviceUser.getTodosUsuarios();
-		
-		model.addObject("alunos",alunos);
-		
-		return model;
-	}
-	
+//	@RequestMapping(path="/alunos")
+//	public ModelAndView alunos(){
+//		ModelAndView model = new ModelAndView("alunos");
+//		List<Usuario> alunos = serviceUser.getTodosUsuarios();
+//		
+//		model.addObject("alunos",alunos);
+//		
+//		return model;
+//	}
+//	
 	
 	@RequestMapping(path="/cadastrarTurma")
 	public String cadastrarTurma(){
 		return "cadastrarTurma";
 	}
 	
-	@RequestMapping(path="/lista/alocar")
+	@RequestMapping(path="/alocar")
 	public String alocar(){
 		return "alocar";
 	}
@@ -69,7 +69,7 @@ public class TurmaController {
 		
 		service.alocarAlunos(idTurma, alunos);
 		
-		return "redirect:/turma/lista/alocar/"+idTurma;
+		return "redirect:/turma/alocar/"+idTurma;
 	}
 	
 //	@RequestMapping(path="/salvar", method=RequestMethod.POST)
@@ -81,9 +81,9 @@ public class TurmaController {
 //		return "redirect:/turma/lista";
 //	}
 	
-	@RequestMapping(path="/lista/remover/{id}")
+	@RequestMapping(path="/remover/{id}")
 	public String removerTurma(@PathVariable("id") Integer id){
 		service.removerTurma(id);
-		return "redirect:/turma/lista";
+		return "redirect:/turma/listar";
 	}
 }

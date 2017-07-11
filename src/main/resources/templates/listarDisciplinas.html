@@ -5,31 +5,28 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorator="layout/layout">
 <section layout:fragment="content">
+
 	<!-- o conteúdo da página vai aqui -->
 
 	<div class="container">
 		<div class="row white">
-			<h5 class="teal-text">Usuários</h5>
-			<table class="highlight " id="table-admin">
+			<h5 class="teal-text">Disciplinas</h5>
+			<table class="highlight">
 				<thead>
 					<tr>
-						<th>Id</th>
-						<th>Login</th>
+						<th>Codigo</th>
 						<th>Nome</th>
-						<th>Papel</th>
 						<th>Opções</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr th:each="usuario : ${usuarios}">
-						<td th:text="${usuario.id}"></td>
-						<td th:text="${usuario.login}"></td>
-						<td th:text="${usuario.nome}"></td>
-						<td th:text="${usuario.papel.nome}"></td>
+					<tr th:each="disciplina : ${disciplinas}">
+						<td th:text="${disciplina.codigo}"></td>
+						<td th:text="${disciplina.nome}"></td>
 						<td><a class="btn-floating"
-							th:href="@{${'/usuario/editar/'+usuario.id}}"><i
+							th:href="@{${'/disciplina/atualizar/'+disciplina.id}}"><i
 								class="material-icons">edit</i> </a> <a class="btn-floating"
-							th:href="@{${'/usuario/remover/'+usuario.id}}"><i
+							th:href="@{${'/disciplina/remover/'+disciplina.id}}"><i
 								class="material-icons">delete</i> </a></td>
 					</tr>
 				</tbody>
@@ -37,7 +34,7 @@
 		</div>
 	</div>
 	<div class="fixed-action-btn">
-		<a th:href="@{/usuario/cadastrar}"
+			<a th:href="@{/disciplina/cadastrar}"
 			class="btn-floating btn-large waves-effect waves-light red pulse">
 			<i class="material-icons">add</i>
 		</a>

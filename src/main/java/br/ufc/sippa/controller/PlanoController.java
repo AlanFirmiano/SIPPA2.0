@@ -29,12 +29,7 @@ public class PlanoController {
 		return model;
 	}
 	
-	@RequestMapping(path="/{id}")
-	public String detalhesConta(){
-		return "detalhes-plano";
-	}
-	
-	@RequestMapping(path="/salvar", method=RequestMethod.POST)
+	@RequestMapping(path="/cadastrar", method=RequestMethod.POST)
 	public String salvarPlano(@RequestParam String plano,@RequestParam String diario,@RequestParam Date data){
 		
 		service.salvarPlano(plano, diario, data);
