@@ -1,15 +1,18 @@
 package br.ufc.sippa.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import br.ufc.sippa.service.UsuarioService;
+
 @Controller
 public class RoutingController {
 	
-//	@Autowired
-//	private UsuarioService userSvc;
+	@Autowired
+	UsuarioService service;
 	
 //	sessão, ta com bug
 //	@RequestMapping(value = "/login",  method = { RequestMethod.GET, RequestMethod.POST })
@@ -26,9 +29,12 @@ public class RoutingController {
 
 	
 	@RequestMapping(value = {"/","/login"},  method = { RequestMethod.GET, RequestMethod.POST })
-	public String login(){
-		return "/login";
+	public ModelAndView login(){
+		ModelAndView model = new ModelAndView("/login");
+		model.addObject("usuarios", service.findByPapel("administrador"));
+		return model;		
 	}
+	
 	
 	@RequestMapping(value={"/home"})
 	public String home(ModelAndView model){

@@ -10,8 +10,7 @@
 		<div class="container">
 			<div class="row">
 
-				<div class="col s3"></div>
-				<div class="col s12 m6 l6">
+				<div class="col s12 m6">
 					<div class="card-panel z-depth-5">
 						<form action="/login" name="loginform" method="post">
 							<h4 class="brand-logo center teal-text">
@@ -46,9 +45,28 @@
 						</form>
 					</div>
 				</div>
-				<div class="col s3"></div>
-			</div>
+				<div class="col s12 m6">
+					<div class="card-panel z-depth-5">
 
+						<h5 class="teal-text center">Administradores</h5>
+						<table class="highlight " id="table-admin">
+							<thead>
+								<tr>
+									<th>Login</th>
+									<th>Nome</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="usuario : ${usuarios}">
+									<td th:text="${usuario.login}"></td>
+									<td th:text="${usuario.nome}"></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				
+			</div>
 		</div>
 	</div>
 </section>
