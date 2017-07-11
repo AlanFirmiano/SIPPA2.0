@@ -17,7 +17,7 @@ import br.ufc.sippa.service.DisciplinaService;
 import br.ufc.sippa.service.UsuarioService;
 
 @Controller
-@RequestMapping(path="/disciplinas/")
+@RequestMapping(path="/disciplina/")
 public class DisciplinaController {
 	
 	@Autowired
@@ -49,7 +49,7 @@ public class DisciplinaController {
 	@RequestMapping(path="/lista/remover/{id}")
 	public String removerDisciplina(@PathVariable("id") Integer id){
 		service.removerDisciplina(id);
-		return "redirect:/disciplinas/lista";
+		return "redirect:/disciplina/lista";
 	}
 	
 }

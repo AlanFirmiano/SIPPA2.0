@@ -20,24 +20,33 @@
 	<body class="#f5f5f5 grey lighten-4">
 		<!-- header -->
 		<!-- Dropdown Structure -->
-		
 		<ul id="dropdownUsuario" class="dropdown-content">
 		  <li><a th:href="@{/usuario/cadastrar}">Cadastrar</a></li>
 		  <li><a th:href="@{/usuario/listar?tipo=todos}">Listar</a></li>
 		</ul>
+		
 		<!-- Dropdown Structure -->
 		<ul id="dropdownDisciplina" class="dropdown-content">
-		  <li><a th:href="@{/disciplinas/cadastrarDisciplina}">Cadastrar</a></li>
-		  <li><a th:href="@{/disciplinas/lista}">Listar</a></li>
+		  <li><a th:href="@{/disciplina/cadastrar}">Cadastrar</a></li>
+		  <li><a th:href="@{/disciplina/listar}">Listar</a></li>
 		</ul>
+<<<<<<< HEAD
 		<ul id="dropdownAlocar" class="dropdown-content">
 		  <li><a th:href="@{/disciplinas/lista/alocar}">Cadastrar</a></li>
+=======
+		
+		<!-- Dropdown Structure -->
+		<ul id="dropdownTurma" class="dropdown-content">
+		  <li><a th:href="@{/turma/cadastrar}">Cadastrar</a></li>
+		  <li><a th:href="@{/turma/listar}">Listar</a></li>
+>>>>>>> 5d4ab7277045d62d02e33e2abcc5ea10b5f3a358
 		</ul>
+		
 		<nav class="teal">
 			
 			<div class="nav-wrapper">
-				<strong th:inline="text">Olá [[${#httpServletRequest.remoteUser}]]!</strong>
-				<a href="#" class="brand-logo center"><i class="material-icons">class</i>SIPPA2.0</a>
+				<strong th:inline="text">Bem-vindo, [[${#httpServletRequest.remoteUser}]]!</strong>
+				<a th:href="@{/home}" class="brand-logo center"><i class="material-icons">class</i>SIPPA2.0</a>
 				<ul id="nav-mobile" class="right hide-on-med-and-down">
 			        <li>
 			        	<a class="dropdown-button" href="#!" data-activates="dropdownUsuario">
@@ -50,8 +59,8 @@
 			        	<i class="material-icons right">arrow_drop_down</i></a>
 			        </li>
 			        <li>
-			        	<a class="dropdown-button" href="#!" data-activates="dropdownAlocar">
-			        	Alocar
+			        	<a class="dropdown-button" href="#!" data-activates="dropdownTurma">
+			        	Turma
 			        	<i class="material-icons right">arrow_drop_down</i></a>
 			        </li>
 					<li><a th:href="@{/logout}"><i class="material-icons right">power_settings_new</i></a></li>

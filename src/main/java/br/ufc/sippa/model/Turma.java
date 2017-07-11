@@ -30,7 +30,7 @@ public class Turma {
 	List<Usuario> alunos;
 	
 	public Turma(){}
-	
+
 	public Integer getId() {
 		return id;
 	}
@@ -45,6 +45,14 @@ public class Turma {
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+
+	public Disciplina getDisciplina() {
+		return disciplina;
+	}
+
+	public void setDisciplina(Disciplina disciplina) {
+		this.disciplina = disciplina;
 	}
 
 	public Usuario getProfessor() {
@@ -77,6 +85,10 @@ public class Turma {
 
 	public void setAlunos(List<Usuario> alunos) {
 		this.alunos = alunos;
+	}
+	
+	public void addAlunos(Usuario aluno) {
+		this.alunos.add(aluno);
 	}
 	
 }

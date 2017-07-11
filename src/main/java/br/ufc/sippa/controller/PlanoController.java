@@ -14,7 +14,7 @@ import br.ufc.sippa.model.Plano;
 import br.ufc.sippa.service.PlanoService;
 
 @Controller
-@RequestMapping(path="/planos/")
+@RequestMapping(path="/plano/")
 public class PlanoController {
 	@Autowired
 	PlanoService service;
@@ -39,6 +39,6 @@ public class PlanoController {
 		
 		service.salvarPlano(plano, diario, data);
 		
-		return "redirect:/planos/";
+		return "redirect:/plano/";
 	}
 }
