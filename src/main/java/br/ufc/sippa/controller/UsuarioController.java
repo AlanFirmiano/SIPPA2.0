@@ -58,7 +58,6 @@ public class UsuarioController {
 	public 	String cadastrar(Model model){
 		Usuario user = new Usuario();
 		model.addAttribute("usuario", user);
-		model.addAttribute("papeis", servicePapel.findAll());
 		return "cadastrarUsuario";
 	}
 		
