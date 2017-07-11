@@ -12,25 +12,28 @@
 				<div class="card col s6 white z-depth-3">
 	
 					<h5 class="teal-text">Cadastrar Usuario</h5>
-					<form action="/usuario/cadastrar" method="post" th:object="${usuario}">
+					<form th:action="@{/usuario/editar/}+${currentUser.id}" method="post" th:object="${usuario}">
 						<div class="input-field col s12">
-							<input id="login" type="text" name="login" class="validate" /> <label
-								for="login" data-error="Login Incorreto"
-								data-sucess="Login correto">Login</label>
+							<input id="login" type="text" name="login" class="validate" 
+							th:value="${currentUser.login}"/>
+							<label for="login" data-error="Login Incorreto" data-sucess="Login correto">Login</label>
 						</div>
 						<div class="input-field col s12">
-							<input id="nome" type="text" name="nome" class="validate" /> <label
-								for="nome" data-error="Nome Incorreto" data-sucess="Nome correto">Nome</label>
+							<input id="nome" type="text" name="nome" class="validate"
+								th:value="${currentUser.nome}"/>
+								<label for="nome" data-error="Nome Incorreto" data-sucess="Nome correto">Nome</label>
 						</div>
 						<div class="input-field col s12">
-							<input id="senha" type="password" name="senha" class="validate" />
+							<input id="senha" type="password" name="senha" class="validate" 
+							th:value="${currentUser.senha}"/>
 							<label for="senha">Senha</label>
 						</div>
 						<div class="input-field col s12">
 							<select class="browser-default" name="papel" th:object="${papel}">
 								<option th:each="papel : ${papeis}"
 										th:value="${papel.id}"
-										th:text="${papel.nome}">
+										th:text="${papel.nome}"
+										th:selected="${papel.id == currentUser.papel.id}">
 										</option>
 							</select>
 						</div>
@@ -45,7 +48,7 @@
 				<div class="col s3"></div>
 			</div>
 		</div>
-		<script type="text/javascript">
+		<script type="text/java">
 			$(document).ready(function() {
 				$('select').material_select();
 			});

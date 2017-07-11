@@ -28,7 +28,6 @@
 						</div>
 						<div class="input-field col s12">
 							<select class="browser-default" name="papel" th:object="${papel}">
-								<option value="" disabled="disabled" selected="selected">Tipo</option>
 								<option th:each="papel : ${papeis}"
 										th:value="${papel.id}"
 										th:text="${papel.nome}">

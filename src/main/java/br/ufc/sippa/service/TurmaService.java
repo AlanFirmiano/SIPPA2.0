@@ -21,9 +21,8 @@ public class TurmaService {
 	@Autowired
 	PresencaRepository repoPresenca;
 	
-	public Turma salvarTurma(String nome, String periodo, Disciplina disc, Usuario professor){
+	public Turma save(String periodo, Disciplina disc, Usuario professor){
 		Turma turma = new Turma();
-		turma.setNome(nome);
 		turma.setPeriodo(periodo);
 		turma.setDisciplina(disc);
 		turma.setProfessor(professor);

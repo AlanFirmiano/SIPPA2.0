@@ -49,31 +49,32 @@ public class TurmaController {
 //		
 //		return model;
 //	}
-//	
 	
-	@RequestMapping(path="/cadastrarTurma")
+	@RequestMapping(path="/cadastrar")
 	public String cadastrarTurma(Model model){
 		model.addAttribute("disciplinas", serviceDisc.findAll());
 		model.addAttribute("professores", serviceUser.getUsuarioPorPapel("professor"));
-		model.addAttribute("alunos", serviceUser.getUsuarioPorPapel("aluno"));
-		return "alocar";
+		//Pq passar os alunos aki?
+		//model.addAttribute("alunos", serviceUser.getUsuarioPorPapel("aluno"));
+		return "cadastrarTurma";
 	}
 	
-	
-	@RequestMapping(path="/salvar", method=RequestMethod.POST)
-	public String alocar(@RequestParam String nome,@RequestParam String periodo,@RequestParam Disciplina disc, @RequestParam Usuario prof){
-		service.salvarTurma(nome, periodo, disc, prof);
+	@RequestMapping(path="/cadastrar", method=RequestMethod.POST)
+	public String alocar(@RequestParam String periodo,@RequestParam Disciplina disciplina, @RequestParam Usuario professor){
+		service.save(periodo, disciplina, professor);
 		
-		return "redirect:/turma/lista";
+		return "redirect:/turma/listar";
 	}
 	
-	@RequestMapping(path="/alocar/{idTurma}/alocarAluno", method=RequestMethod.POST)
+
+	
+	@RequestMapping(path="/cadastrar/{idTurma}/alocarAluno", method=RequestMethod.POST)
 	public String alocarAluno(@PathVariable("idTurma") Integer idTurma, 
 			@PathVariable("usuarios") List<Usuario> alunos){
 		
 		service.alocarAlunos(idTurma, alunos);
 		
-		return "redirect:/turma/alocar/"+idTurma;
+		return "redirect:/turma/cadastrar/"+idTurma;
 	}
 	
 //	@RequestMapping(path="/salvar", method=RequestMethod.POST)

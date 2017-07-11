@@ -1,6 +1,5 @@
 package br.ufc.sippa.controller;
 
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,7 +12,6 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.ufc.sippa.model.Usuario;
-import br.ufc.sippa.model.Usuario_papel;
 import br.ufc.sippa.service.PapelService;
 import br.ufc.sippa.service.UsuarioService;
 
@@ -54,8 +52,8 @@ public class UsuarioController {
 	public ModelAndView todos(@RequestParam String tipo){
 		ModelAndView model = new ModelAndView("listarUsuarios");
 		getListUsuario(model, tipo);
-		List<Usuario_papel> papeis = servicePapel.findAll();
-		model.addObject("papeis", papeis);
+//		List<Usuario_papel> papeis = servicePapel.findAll();
+//		model.addObject("papeis", papeis);
 		return model;
 	}
 	@RequestMapping(path="/cadastrar", method=RequestMethod.GET)
@@ -72,6 +70,25 @@ public class UsuarioController {
 		if(service.findOne(id)==null){
 			attributes.addFlashAttribute("mensagemSucesso", "Usuário removido com sucesso!");
 		}
+		return "redirect:/usuario/";
+	}
+	
+	
+	@RequestMapping(path="/editar/{id}", method=RequestMethod.GET)
+	public 	String editar(@PathVariable("id") Long id, Model model){
+		model.addAttribute("currentUser", service.findOne(id));
+		model.addAttribute("papeis", servicePapel.findAll());
+		return "editarUsuario";
+	}
+	
+	@RequestMapping(path={"/editar/{id}"}, method=RequestMethod.POST)
+	public String editar_post(@PathVariable("id") Long id, Usuario usuario, BindingResult result, RedirectAttributes attributes){
+		if (result.hasErrors()){
+			attributes.addAttribute("erro",result.getAllErrors().get(0));
+			return "redirect:/usuario/editar/"+(usuario.getId());
+		}
+		service.save(usuario);
+		attributes.addFlashAttribute("mensagemSucesso", "Usuário cadastrado com sucesso!");
 		return "redirect:/usuario/";
 	}
 	
